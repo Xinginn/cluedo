@@ -1,13 +1,13 @@
 import { Form } from './components/atoms'
 
+import { Text } from './components/atoms';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Form.Input placeholder={'Login'}></Form.Input>
-        <Form.Input placeholder={'Password'}></Form.Input>
-        <Form.Input placeholder={'Votre message'}></Form.Input>
-      </header>
+      <Text.Title text="Un titre imposant"></Text.Title>
+      <Text.Paragraph style={{width: "80px"}} text="Ceci est un paragraph assez long, hsitoire de voir"></Text.Paragraph>
+      
     </div>
   );
 }
