@@ -1,3 +1,5 @@
-import Input from "./Input";
+import Input from "./Input"
+import TextArea from "./TextArea"
+import Button from "./Button"
 
-export { Input };
+export { Input, TextArea, Button }
