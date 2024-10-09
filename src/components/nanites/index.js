@@ -1,3 +1,3 @@
-import * as DOM from './DOM';
+import * as Form from "./Form";
 
-export { DOM };
+export { Form }

@@ -1,9 +1,9 @@
 import React from 'react'
-import { DOM } from '../../nanites'
+import { Form } from '../../nanites'
 
-const Input = () => {
+const Input = ({ ...props }) => {
   return (
-    <DOM.InputStyled></DOM.InputStyled>
+    <Form.InputStyled {...props} />
   )
 }
 
