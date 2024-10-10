@@ -6,17 +6,25 @@ import { Visual } from '../components/atoms'
 const Scene = () => {
 
   const data = {
-    url: '/assets/img/background/cabaret.png',
-    title: 'Cabaret',
-    timer: '07:29'
+    timer: '07:29',
+    currentScene: {
+      url: '/assets/img/background/cabaret.png',
+      title: 'Cabaret',
+      leftScene: {
+        title: 'street'
+      },
+      rightScene: {
+        title: 'slum'
+      }
+    },
   }
 
   return (
     <Container.Column width={'100%'}>
-      <Header title={data.title} timer={data.timer} />
-      <MovementIcons />
+      <Header title={data.currentScene.title} timer={data.timer} />
+      <MovementIcons currentScene={data.currentScene} />
       <CharactersInScene />
-      <Visual.Background url={data.url} />
+      <Visual.Background url={data.currentScene.url} />
     </Container.Column>
   )
 }
