@@ -1,3 +1,4 @@
 import Header from "./Header"
+import MovementIcons from "./MovementIcons"
 
-export { Header }
+export { Header, MovementIcons }

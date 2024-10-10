@@ -8,7 +8,16 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    height: 100vh;
     font-family: Arial;
+  }
+  
+  #root {
+    height: 100vh;
+  }
+
+  .App {
+    height: 100vh;
   }
 `
 
