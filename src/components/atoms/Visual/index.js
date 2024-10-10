@@ -1,3 +1,4 @@
-import Image from "./Image";
+import Image from "./Image"
+import Icon from "./Icon";
 
-export { Image };
+export { Image, Icon };
