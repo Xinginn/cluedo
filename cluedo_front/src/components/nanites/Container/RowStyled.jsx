@@ -8,6 +8,7 @@ const RowStyled = styled.div`
   background-color: ${(props) => props.bgColor ?? "white"};
   margin: ${(props) => props.margin ?? '0'};
   padding: ${(props) => props.padding ?? '0'};
+  height: ${(props) => props.height ?? "fit-content"};
 `;
 
 export default RowStyled;
