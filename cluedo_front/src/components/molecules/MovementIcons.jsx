@@ -8,7 +8,7 @@ const MovementIcons = () => {
   }
 
   return (
-    <Container.Row justifyContent={'space-between'} padding={'0 5px'}>
+    <Container.Row justifyContent={'space-between'} height={'100vh'} padding={'0 5px'}>
       <Visual.Icon src={'/assets/img/arrow-left.svg'} width={'40px'} height={'40px'} onClick={() => handleMovementClick('left')}>
       </Visual.Icon>
       <Visual.Icon src={'/assets/img/arrow-right.svg'} width={'40px'} height={'40px'} onClick={() => handleMovementClick('right')}>
