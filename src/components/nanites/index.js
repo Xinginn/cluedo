@@ -1,4 +1,5 @@
 import * as Form from "./Form";
-import * as Text from './Text'
+import * as Text from './Text';
+import * as Container from './Container';
 
-export { Form, Text }
+export { Form, Text, Container };
