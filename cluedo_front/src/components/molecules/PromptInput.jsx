@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Container, Form, Text } from "../atoms";
+import { Container, Form } from "../atoms";
 
 const PromptInput = () => {
   const [prompt, setPrompt] = useState()

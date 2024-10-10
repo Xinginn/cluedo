@@ -7,6 +7,7 @@ const RowStyled = styled.div`
   justify-content: ${(props) => props.justifyContent ?? "space-around"};
   margin: ${(props) => props.margin ?? '0'};
   padding: ${(props) => props.padding ?? '0'};
+  width: ${(props) => props.width ?? '100vw'};
   height: ${(props) => props.height ?? "fit-content"};
   background-color: ${(props) => props.bgColor ?? "transparent"};
 `;

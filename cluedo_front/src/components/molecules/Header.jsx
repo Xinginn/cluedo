@@ -8,8 +8,8 @@ const Header = ({ timer = '88:88', title = 'Salle actuelle' }) => {
   }
 
   return (
-    <Container.Row bgColor={'#fcdd62'} padding={'3px'}>
-      <Container.Row bgColor={'#b59d46'} padding={'5px 15px'}>
+    <Container.Row bgColor={'#fcdd62'} width={'calc(100vw - 6px)'} padding={'3px'}>
+      <Container.Row bgColor={'#b59d46'} padding={'5px 15px'} width={'10%'}>
         <Text.Paragraph fontSize={'24px'}>{timer}</Text.Paragraph>
       </Container.Row>
       <Text.Title>{title}</Text.Title>
