@@ -8,6 +8,10 @@ const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: ${(props) => props.bgColor ?? '#e2e2e6'};
+  &:hover {
+    background-color: ${(props) => props.bgColorHover ?? '#d0d0d7'};
+  }
 `;
 
 export default ButtonStyled;

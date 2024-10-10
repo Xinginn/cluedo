@@ -5,14 +5,18 @@ import { Visual } from '../components/atoms'
 
 const Scene = () => {
 
-  const url = '/assets/img/background/cabaret.png'
+  const data = {
+    url: '/assets/img/background/cabaret.png',
+    title: 'Cabaret',
+    timer: '07:29'
+  }
 
   return (
     <Container.Column width={'100%'}>
-      <Header />
+      <Header title={data.title} timer={data.timer} />
       <MovementIcons />
       <CharactersInScene />
-      <Visual.Background url={url} />
+      <Visual.Background url={data.url} />
     </Container.Column>
   )
 }
