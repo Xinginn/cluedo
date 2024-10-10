@@ -1,4 +1,4 @@
-import { Form } from './components/atoms'
+import { Form, Visual } from './components/atoms'
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
         <Form.Input placeholder={'Login'}></Form.Input>
         <Form.Input placeholder={'Password'}></Form.Input>
         <Form.Input placeholder={'Votre message'}></Form.Input>
+        <Visual.Image src={'/assets/img/stitch1.webp'}></Visual.Image>
       </header>
     </div>
   );
