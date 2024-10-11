@@ -1,23 +1,7 @@
 import React from 'react'
 import { Container, Action, Visual, Text } from '../atoms'
 
-const ClueList = () => {
-
-  const characters = [
-    {
-      name: 'John Doe',
-      role: 'Père de la victime'
-    },
-    {
-      name: 'Maryse Gregoire',
-      role: 'Soeur de la victime'
-    },
-    {
-      name: 'Gaspar Rodrigue',
-      role: 'Fiancé de la victime'
-    },
-
-  ]
+const ClueList = ({ characters }) => {
 
   return (
     <Container.Column>

@@ -1,10 +1,14 @@
 import React from 'react'
 import { Text, Container, Visual } from '../atoms'
 
-const Header = ({ timer = '88:88', title = 'Salle actuelle' }) => {
+const Header = ({ timer = '88:88', title = 'Salle actuelle', icon = 'note' }) => {
 
   const handleNoteClick = () => {
-    console.log('note clique')
+    alert('open note')
+  }
+
+  const handleNoteClose = () => {
+    alert('close note')
   }
 
   return (
@@ -13,12 +17,21 @@ const Header = ({ timer = '88:88', title = 'Salle actuelle' }) => {
         <Text.Paragraph fontSize={'24px'}>{timer}</Text.Paragraph>
       </Container.Row>
       <Text.Title>{title}</Text.Title>
-      <Visual.Icon
-        src={'/assets/img/book1.svg'}
-        width={'40px'}
-        height={'40px'}
-        onClick={handleNoteClick}
-      ></Visual.Icon>
+      {icon === 'close' ?
+        <Visual.Icon
+          src={'/assets/img/close-circle.svg'}
+          width={'40px'}
+          height={'40px'}
+          onClick={handleNoteClose}
+        />
+        :
+        <Visual.Icon
+          src={'/assets/img/book1.svg'}
+          width={'40px'}
+          height={'40px'}
+          onClick={handleNoteClick}
+        />
+      }
     </Container.Row>
   )
 }
