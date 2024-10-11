@@ -35,7 +35,7 @@ const Clue = () => {
 
   return (
     <Container.Column>
-      <Header title={data.currentScene.title} timer={data.timer}></Header>
+      <Header title={data.currentScene.title} timer={data.timer} icon='close' />
       <ClueList characters={characters}></ClueList>
     </Container.Column>
   )
