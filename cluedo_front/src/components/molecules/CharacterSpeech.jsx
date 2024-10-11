@@ -8,7 +8,7 @@ const CharacterSpeech = ({ character, ...props }) => {
     <Container.Column>
       <Visual.Image height="600px" src={character.body}></Visual.Image>
       <Container.Row width="400px" bgColor="rgba(200,200,200,0.7)" padding="4px">
-        <Text.Paragraph >{text}</Text.Paragraph>
+        <Text.Paragraph>{text}</Text.Paragraph>
       </Container.Row>
     </Container.Column>
   )

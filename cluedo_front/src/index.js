@@ -25,6 +25,13 @@ const GlobalStyle = createGlobalStyle`
   .App {
     height: 100vh;
   }
+
+  /*
+  * {
+    border: solid red 1px;
+    box-sizing: border-box;
+  }
+    */
 `
 const router = createBrowserRouter([
   {
