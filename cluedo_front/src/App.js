@@ -1,4 +1,4 @@
-import Scene from "./pages/Scene";
+import Scene from "./templates/Scene";
 
 function App() {
   return (
