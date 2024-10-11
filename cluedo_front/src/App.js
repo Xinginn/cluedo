@@ -1,10 +1,12 @@
 import Scene from "./templates/Scene";
 import Discussion from "./templates/Discussion";
+import CharacterDetails from "./templates/CharacterDetails";
 
 function App() {
   return (
     <div className="App">
-      <Scene />
+      {/* <Scene /> */}
+      <CharacterDetails></CharacterDetails>
     </div>
   );
 }

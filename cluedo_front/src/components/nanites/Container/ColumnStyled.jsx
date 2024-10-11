@@ -8,7 +8,6 @@ const ColumnStyled = styled.div`
   gap: ${(props) => props.gap ?? "8px"};
   width: ${(props) => props.width ?? 'fit-content'};
   height: ${(props) => props.height ?? 'fit-content'};
-
 `;
 
 export default ColumnStyled;
