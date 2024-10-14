@@ -3,14 +3,6 @@ import { Text, Container, Visual, Action } from '../atoms'
 
 const Header = ({ timer = '88:88', title = 'Salle actuelle', icon = 'note' }) => {
 
-  const handleNoteClick = () => {
-    alert('open note')
-  }
-
-  const handleNoteClose = () => {
-    alert('close note')
-  }
-
   return (
     <Container.Row bgColor={'#fcdd62'} width={'calc(100vw - 6px)'} padding={'3px'}>
       <Container.Row bgColor={'#b59d46'} padding={'5px 15px'} width={'4rem'}>

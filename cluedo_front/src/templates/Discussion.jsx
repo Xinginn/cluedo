@@ -1,8 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 import { Container, Visual } from '../components/atoms'
 import { CharacterSpeech, Header, PromptInput } from '../components/molecules'
 
 const Discussion = () => {
+
+  const currentCharacter = useSelector((state) => {
+    console.log('current character : ', state.characterHistory.currentCharacter);
+    return state.characterHistory.currentCharacter;
+  });
 
   const data = {
     timer: '07:36',
@@ -15,10 +22,6 @@ const Discussion = () => {
       rightScene: {
         title: 'slum'
       }
-    },
-    character: {
-      name: 'Elizabeth Macarthur',
-      face: ''
     }
   }
 
@@ -26,7 +29,7 @@ const Discussion = () => {
   return (
     <Container.Column justifyContent="space-between" height="100vh">
       <Header title={data.currentScene.title} timer={data.timer} icon='close' />
-      <CharacterSpeech character={data.character} />
+      <CharacterSpeech character={currentCharacter} />
       <PromptInput />
       <Visual.Background url={data.currentScene.url} />
     </Container.Column>

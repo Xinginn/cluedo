@@ -1,14 +1,7 @@
 import React from "react"
 import { Action, Container, Visual } from '../atoms'
-import { useNavigate } from "react-router-dom"
 
-const CharactersInScene = ({ characters }) => {
-
-  const navigate = useNavigate()
-
-  const handleNavigation = (character) => {
-    navigate('/discussion', { state: { character } })
-  }
+const CharactersInScene = ({ characters, setCurrentCharacter }) => {
 
   return (
     <Container.Row height="100px">
@@ -18,6 +11,7 @@ const CharactersInScene = ({ characters }) => {
             key={index}
             width="100px"
             to={'/discussion'}
+            onClick={() => setCurrentCharacter(item.id)}
           >
             <Action.Button width="100px">
               <Visual.Image width='100%' src={item.face}></Visual.Image>

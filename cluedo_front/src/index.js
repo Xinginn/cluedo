@@ -1,10 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { store } from './store'
+import { Provider } from 'react-redux'
+import { createGlobalStyle } from "styled-components"
+
 import App from './App'
 import Discussion from './templates/Discussion'
 import Note from './templates/Note'
-import { createGlobalStyle } from "styled-components"
 
 
 const GlobalStyle = createGlobalStyle`
@@ -41,7 +44,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    <GlobalStyle />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+      <GlobalStyle />
+    </Provider>
   </React.StrictMode>
 );
