@@ -1,13 +1,7 @@
 import React from "react";
 import { Action, Container, Visual } from '../atoms';
 
-const CharactersInScene = () => {
-  const characters = [
-    { name: "toto", face: "face_1.png" },
-    { name: "toto", face: "face_2.png" },
-    { name: "toto", face: "face_1.png" },
-
-  ];
+const CharactersInScene = ({ characters }) => {
 
   return (
     <Container.Row height="100px">
@@ -15,7 +9,7 @@ const CharactersInScene = () => {
         return (
           <Action.Link width="100px" href={'/discussion'}>
             <Action.Button width="100px" key={index}>
-              <Visual.Image width='100%' src={`/assets/img/faces/${item.face}`}></Visual.Image>
+              <Visual.Image width='100%' src={item.face}></Visual.Image>
             </Action.Button>
           </Action.Link>
         )

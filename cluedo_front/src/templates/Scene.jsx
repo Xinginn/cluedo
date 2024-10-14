@@ -23,14 +23,31 @@ const Scene = () => {
   }, [])
 
   const data = {
-    timer: '07:29'
+    timer: '07:29',
+    characters: [
+      {
+        name: 'John',
+        face: '/assets/img/faces/face_1.png',
+        body: '/assets/img/bodies/body_1.png'
+      },
+      {
+        name: 'Vanessa',
+        face: '/assets/img/faces/face_2.png',
+        body: '/assets/img/bodies/body_2.png'
+      },
+      {
+        name: 'John',
+        face: '/assets/img/faces/face_1.png',
+        body: '/assets/img/bodies/body_1.png'
+      }
+    ]
   }
 
   return (
     <Container.Column width={'100%'}>
       <Header title={currentScene.title} timer={data.timer} />
       <MovementIcons currentScene={currentScene} setCurrentScene={setCurrentScene} />
-      <CharactersInScene />
+      <CharactersInScene characters={data.characters} />
       <Visual.Background url={currentScene.url} />
     </Container.Column>
   )
