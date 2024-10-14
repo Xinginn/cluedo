@@ -1,10 +1,11 @@
 import React from 'react'
-import { LinkStyled } from '../../nanites/Action'
+import { Link as RouterLink } from 'react-router-dom'
 
-const Link = ({ ...props }) => {
+const Link = ({ to, ...props }) => {
   return (
-    <LinkStyled {...props}></LinkStyled>
+    <RouterLink to={{ pathname: to }} {...props}></RouterLink>
   )
 }
 
-export default Link
+
+export default Link;

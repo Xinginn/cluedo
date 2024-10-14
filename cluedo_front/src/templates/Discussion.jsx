@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Visual } from '../components/atoms';
+import React from 'react'
+import { Container, Visual } from '../components/atoms'
 import { CharacterSpeech, Header, PromptInput } from '../components/molecules'
 
 const Discussion = () => {
