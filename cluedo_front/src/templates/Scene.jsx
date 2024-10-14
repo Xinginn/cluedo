@@ -1,30 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'
 import { Visual } from '../components/atoms'
 
 const Scene = () => {
 
-  const data = {
-    timer: '07:29',
-    currentScene: {
+  const [currentScene, setCurrentScene] = useState({})
+
+  useEffect(() => {
+    setCurrentScene({
       url: '/assets/img/background/cabaret.png',
       title: 'Cabaret',
       leftScene: {
-        title: 'street'
+        title: 'street',
+        url: '/assets/img/background/street.png'
       },
       rightScene: {
-        title: 'slum'
+        title: 'slum',
+        url: '/assets/img/background/slum.png'
       }
-    },
+    })
+  }, [])
+
+  const data = {
+    timer: '07:29'
   }
 
   return (
     <Container.Column width={'100%'}>
-      <Header title={data.currentScene.title} timer={data.timer} />
-      <MovementIcons currentScene={data.currentScene} />
+      <Header title={currentScene.title} timer={data.timer} />
+      <MovementIcons currentScene={currentScene} setCurrentScene={setCurrentScene} />
       <CharactersInScene />
-      <Visual.Background url={data.currentScene.url} />
+      <Visual.Background url={currentScene.url} />
     </Container.Column>
   )
 }

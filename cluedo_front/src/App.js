@@ -1,5 +1,4 @@
-import Scene from "./templates/Scene";
-import Discussion from './templates/Discussion'
+import Scene from "./templates/Scene"
 
 function App() {
   return (
