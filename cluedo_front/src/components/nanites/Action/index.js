@@ -1,3 +1,4 @@
-import ButtonStyled from "./ButtonStyled";
+import ButtonStyled from "./ButtonStyled"
+import LinkStyled from "./LinkStyled";
 
-export { ButtonStyled };
+export { ButtonStyled, LinkStyled };

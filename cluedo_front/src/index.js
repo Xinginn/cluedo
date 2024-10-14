@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from './App'
+import Discussion from './templates/Discussion'
+import Note from './templates/Note'
 import { createGlobalStyle } from "styled-components"
 
 
@@ -20,11 +23,25 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 `
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/note",
+    element: <Note />,
+  },
+  {
+    path: "/discussion",
+    element: <Discussion />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
     <GlobalStyle />
   </React.StrictMode>
 );

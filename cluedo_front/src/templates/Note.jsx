@@ -2,7 +2,7 @@ import React from 'react'
 import { Header, ClueList } from '../components/molecules'
 import { Container } from '../components/atoms'
 
-const Clue = () => {
+const Note = () => {
 
   const characters = [
     {
@@ -41,4 +41,4 @@ const Clue = () => {
   )
 }
 
-export default Clue
+export default Note

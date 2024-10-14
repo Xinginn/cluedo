@@ -8,7 +8,7 @@ const RowStyled = styled.div`
   gap: ${(props) => props.gap ?? '0'};
   margin: ${(props) => props.margin ?? '0'};
   padding: ${(props) => props.padding ?? '0'};
-  width: ${(props) => props.width ?? '100vw'};
+  width: ${(props) => props.width ?? '99vw'};
   height: ${(props) => props.height ?? "fit-content"};
   background-color: ${(props) => props.bgColor ?? "transparent"};
 `;
