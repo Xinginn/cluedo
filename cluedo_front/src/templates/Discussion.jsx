@@ -25,9 +25,9 @@ const Discussion = () => {
 
   return (
     <Container.Column justifyContent="space-between" height="100vh">
-      <Header></Header>
-      <CharacterSpeech character={data.character}></CharacterSpeech>
-      <PromptInput></PromptInput>
+      <Header title={data.currentScene.title} timer={data.timer} icon='close' />
+      <CharacterSpeech character={data.character} />
+      <PromptInput />
       <Visual.Background url={data.currentScene.url} />
     </Container.Column>
   )

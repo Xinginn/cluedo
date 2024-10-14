@@ -13,9 +13,11 @@ const CharactersInScene = () => {
     <Container.Row height="100px">
       {characters.map((item, index) => {
         return (
-          <Action.Button width="100px" key={index}>
-            <Visual.Image src={`/assets/img/${item.face}`}></Visual.Image>
-          </Action.Button>
+          <Action.Link width="100px" href={'/discussion'}>
+            <Action.Button width="100px" key={index}>
+              <Visual.Image width='100%' src={`/assets/img/${item.face}`}></Visual.Image>
+            </Action.Button>
+          </Action.Link>
         )
       })}
     </Container.Row>
