@@ -8,7 +8,7 @@ const ClueList = ({ characters }) => {
       {characters.map((character, index) => (
         <Action.Button key={index} width="100%">
           <Container.Row justifyContent={'flex-start'} gap={'5%'}>
-            <Visual.Image src={`/assets/img/face_1.png`} width={'8rem'} />
+            <Visual.Image src={`/assets/img/faces/face_1.png`} width={'8rem'} />
             <Text.Name>
               {`${character.name} - ${character.role}`}
             </Text.Name>

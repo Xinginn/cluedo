@@ -22,7 +22,7 @@ const Note = () => {
   const data = {
     timer: '07:29',
     currentScene: {
-      url: '/assets/img/background/cabaret.png',
+      url: '/assets/img/backgrounds/cabaret.png',
       title: 'Cabaret',
       leftScene: {
         title: 'street'

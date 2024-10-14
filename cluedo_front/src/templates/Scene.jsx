@@ -9,15 +9,15 @@ const Scene = () => {
 
   useEffect(() => {
     setCurrentScene({
-      url: '/assets/img/background/cabaret.png',
+      url: '/assets/img/backgrounds/cabaret.png',
       title: 'Cabaret',
       leftScene: {
         title: 'street',
-        url: '/assets/img/background/street.png'
+        url: '/assets/img/backgrounds/street.png'
       },
       rightScene: {
         title: 'slum',
-        url: '/assets/img/background/slum.png'
+        url: '/assets/img/backgrounds/slum.png'
       }
     })
   }, [])

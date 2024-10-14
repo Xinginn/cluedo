@@ -20,7 +20,7 @@ const Header = ({ timer = '88:88', title = 'Salle actuelle', icon = 'note' }) =>
       {icon === 'close' ?
         <Action.Link href={'/'}>
           <Visual.Icon
-            src={'/assets/img/close-circle.svg'}
+            src={'/assets/img/icons/close-circle.svg'}
             width={'40px'}
             height={'40px'}
           />
@@ -28,7 +28,7 @@ const Header = ({ timer = '88:88', title = 'Salle actuelle', icon = 'note' }) =>
         :
         <Action.Link href={'/note'}>
           <Visual.Icon
-            src={'/assets/img/book1.svg'}
+            src={'/assets/img/icons/book1.svg'}
             width={'40px'}
             height={'40px'}
           />

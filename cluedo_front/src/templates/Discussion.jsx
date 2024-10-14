@@ -7,7 +7,7 @@ const Discussion = () => {
   const data = {
     timer: '07:36',
     currentScene: {
-      url: '/assets/img/background/cabaret.png',
+      url: '/assets/img/backgrounds/cabaret.png',
       title: 'Cabaret',
       leftScene: {
         title: 'street'
