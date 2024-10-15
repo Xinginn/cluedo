@@ -7,7 +7,6 @@ import { CharacterSpeech, Header, PromptInput } from '../components/molecules'
 const Discussion = () => {
 
   const currentCharacter = useSelector((state) => {
-    console.log('current character : ', state.characterHistory.currentCharacter);
     return state.characterHistory.currentCharacter;
   });
 
