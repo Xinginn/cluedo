@@ -13,7 +13,7 @@ const Scene = () => {
 
   const characters = useSelector((state) => {
     return state.characterHistory.characters;
-  });
+  })
 
   const setCurrentCharacter = (id) => {
     dispatch(updateCurrentCharacter({ id }))

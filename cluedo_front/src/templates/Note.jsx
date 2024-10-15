@@ -1,23 +1,22 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateCurrentCharacter } from '../store'
+
+
 import { Header, CharacterList } from '../components/molecules'
 import { Container } from '../components/atoms'
 
 const Note = () => {
+  
+  const dispatch = useDispatch()
 
-  const characters = [
-    {
-      name: 'John Doe',
-      role: 'Père de la victime'
-    },
-    {
-      name: 'Maryse Gregoire',
-      role: 'Soeur de la victime'
-    },
-    {
-      name: 'Gaspar Rodrigue',
-      role: 'Fiancé de la victime'
-    },
-  ]
+  const characters = useSelector((state) => {
+    return state.characterHistory.characters;
+  })
+  
+  const setCurrentCharacter = (id) => {
+    dispatch(updateCurrentCharacter({ id }))
+  }
 
   const data = {
     timer: '07:29',
@@ -36,7 +35,7 @@ const Note = () => {
   return (
     <Container.Column>
       <Header title={data.currentScene.title} timer={data.timer} icon='close' />
-      <CharacterList characters={characters}/>
+      <CharacterList characters={characters} onClick={setCurrentCharacter}/>
     </Container.Column>
   )
 }

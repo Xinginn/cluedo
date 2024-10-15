@@ -1,8 +1,14 @@
-import React from "react";
-import { CharacterInfos, Header } from "../components/molecules";
-import { Action, Container, Visual } from "../components/atoms";
+import React from "react"
+import { useSelector } from "react-redux"
+
+import { CharacterInfos, Header } from "../components/molecules"
+import { Action, Container, Visual } from "../components/atoms"
 
 const CharacterDetails = () => {
+
+  const character = useSelector((state) => {
+    return state.characterHistory.currentCharacter
+  })
 
   const handleDenounceClick = () => {
     console.log("TODO Click on denounce")
@@ -30,7 +36,7 @@ const CharacterDetails = () => {
         </Action.Button>
       </Container.Row>
       <Container.Row>
-        <CharacterInfos character={data.character}/>
+        <CharacterInfos character={character}/>
       </Container.Row>
       <Visual.Background url="/assets/img/backgrounds/notes.jpg" />
     </Container.Column>
