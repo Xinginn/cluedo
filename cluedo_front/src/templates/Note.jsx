@@ -4,16 +4,16 @@ import { updateCurrentCharacter } from '../store'
 
 
 import { Header, CharacterList } from '../components/molecules'
-import { Container } from '../components/atoms'
+import { Container, Visual } from '../components/atoms'
 
 const Note = () => {
-  
+
   const dispatch = useDispatch()
 
   const characters = useSelector((state) => {
     return state.characterHistory.characters;
   })
-  
+
   const setCurrentCharacter = (id) => {
     dispatch(updateCurrentCharacter({ id }))
   }
@@ -35,7 +35,8 @@ const Note = () => {
   return (
     <Container.Column>
       <Header title={data.currentScene.title} timer={data.timer} icon='close' />
-      <CharacterList characters={characters} onClick={setCurrentCharacter}/>
+      <CharacterList characters={characters} onClick={setCurrentCharacter} />
+      <Visual.Background url={'/assets/img/backgrounds/notes.jpg'} />
     </Container.Column>
   )
 }
