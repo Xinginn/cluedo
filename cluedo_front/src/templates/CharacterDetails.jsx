@@ -29,14 +29,14 @@ const CharacterDetails = () => {
       <Container.Row justifyContent="flex-end" >
         <Action.Button width="60px" height="60px">
           <Visual.Icon
-            src={'/assets/img/icons/close-circle.svg'}
+            src={'/assets/img/icons/hammer-law.svg'}
             width={'40px'}
             height={'40px'}
-            onClick={handleDenounceClick}/>
+            onClick={handleDenounceClick} />
         </Action.Button>
       </Container.Row>
       <Container.Row>
-        <CharacterInfos character={character}/>
+        <CharacterInfos character={character} />
       </Container.Row>
       <Visual.Background url="/assets/img/backgrounds/notes.jpg" />
     </Container.Column>
