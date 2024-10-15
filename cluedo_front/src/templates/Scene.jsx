@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateCurrentCharacter } from '../store'
+import { fetchCharacters, updateCurrentCharacter } from '../store'
 
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'
@@ -9,15 +9,19 @@ import { Visual } from '../components/atoms'
 const Scene = () => {
 
   const [currentScene, setCurrentScene] = useState({})
-  const dispatch = useDispatch()
 
-  const characters = useSelector((state) => {
-    return state.characterHistory.characters;
-  })
+  const characters = useSelector((state) => state.characterHistory.characters)
+
+  const dispatch = useDispatch()
 
   const setCurrentCharacter = (id) => {
     dispatch(updateCurrentCharacter({ id }))
   }
+
+  useEffect(() => {
+    console.log("Dispatching fetchCharacters...")
+    dispatch(fetchCharacters())
+  }, [])
 
   useEffect(() => {
     setCurrentScene({
