@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, Container, Visual, Action } from '../atoms'
 
-const Header = ({ timer = '88:88', title = 'Salle actuelle', icon = 'note' }) => {
+const Header = ({ timer = '88:88', title = 'Salle actuelle', link = '/', icon }) => {
 
   return (
     <Container.Row bgColor={'#fcdd62'} width={'calc(100vw - 6px)'} padding={'3px'}>
@@ -9,23 +9,13 @@ const Header = ({ timer = '88:88', title = 'Salle actuelle', icon = 'note' }) =>
         <Text.Paragraph fontSize={'24px'} textAlign={'center'}>{timer}</Text.Paragraph>
       </Container.Row>
       <Text.Title>{title}</Text.Title>
-      {icon === 'close' ?
-        <Action.Link to={'/'}>
-          <Visual.Icon
-            src={'/assets/img/icons/close-circle.svg'}
-            width={'40px'}
-            height={'40px'}
-          />
-        </Action.Link>
-        :
-        <Action.Link to={'/note'}>
-          <Visual.Icon
-            src={'/assets/img/icons/book1.svg'}
-            width={'40px'}
-            height={'40px'}
-          />
-        </Action.Link>
-      }
+      <Action.Link to={`${link}`}>
+        <Visual.Icon
+          src={`/assets/img/icons/${icon}.svg`}
+          width={'40px'}
+          height={'40px'}
+        />
+      </Action.Link>
     </Container.Row>
   )
 }

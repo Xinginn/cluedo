@@ -38,7 +38,7 @@ const Scene = () => {
 
   return (
     <Container.Column width={'100%'}>
-      <Header title={currentScene.title} timer={timer} />
+      <Header title={currentScene.title} timer={timer} link={'/note'} icon={'book'} />
       <MovementIcons currentScene={currentScene} setCurrentScene={setCurrentScene} />
       <CharactersInScene characters={characters} setCurrentCharacter={setCurrentCharacter} />
       <Visual.Background url={currentScene.url} />

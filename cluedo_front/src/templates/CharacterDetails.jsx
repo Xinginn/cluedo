@@ -10,21 +10,18 @@ const CharacterDetails = () => {
     return state.characterHistory.currentCharacter
   })
 
-  const handleDenounceClick = () => {
-    console.log("TODO Click on denounce")
-  }
-
   return (
     <Container.Column justifyContent="space-between" height="100vh">
-      <Header title="Dossier du suspect" icon="close"></Header>
+      <Header title="Dossier du suspect" link="/note" icon="go-back"></Header>
       <Container.Row justifyContent="flex-end" >
-        <Action.Button width="60px" height="60px">
-          <Visual.Icon
-            src={'/assets/img/icons/hammer-law.svg'}
-            width={'40px'}
-            height={'40px'}
-            onClick={handleDenounceClick} />
-        </Action.Button>
+        <Action.Link to={'/accuse'}>
+          <Action.Button width="60px" height="60px">
+            <Visual.Icon
+              src={'/assets/img/icons/hammer-law.svg'}
+              width={'40px'}
+              height={'40px'} />
+          </Action.Button>
+        </Action.Link>
       </Container.Row>
       <Container.Row>
         <CharacterInfos character={character} />
