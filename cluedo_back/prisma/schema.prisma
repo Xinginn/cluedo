@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Investigation {
+  id Int @id @unique @default(autoincrement())
+  setting String @default("1920")
+  events String
+  victimName String @default("Didier Cedé")
+  victimFace String @default("default.jpg")
+  victimBody String @default("default.jpg")
+  autopsy String @default("La victime a été retrouvée par un passant dans une ruelle. Elle avait une barre à mine plantée dans le torse.")
+
+  characters Character[]
+}
+
+model Character {
+  id Int @unique @default(autoincrement())
+  body String @default("default.jpg")
+  face String @default("default.jpg")
+  name String
+  role String
+  personality String
+  description String
+  isKiller Boolean @default(false)
+
+  investigationId Int
+  investigation Investigation @relation(fields: [investigationId], references: [id])
+}
+
