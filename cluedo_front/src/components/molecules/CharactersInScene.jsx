@@ -5,16 +5,16 @@ const CharactersInScene = ({ characters, setCurrentCharacter }) => {
 
   return (
     <Container.Row height="100px">
-      {characters.map((item, index) => {
+      {characters.map((character, index) => {
         return (
           <Action.Link
             key={index}
             width="100px"
             to={'/discussion'}
-            onClick={() => setCurrentCharacter(item.id)}
+            onClick={() => setCurrentCharacter(character.id)}
           >
             <Action.Button width="100px">
-              <Visual.Image width='100%' src={item.face}></Visual.Image>
+              <Visual.Image width='100%' src={`/assets/img/faces/${character.face}`}></Visual.Image>
             </Action.Button>
           </Action.Link>
         )

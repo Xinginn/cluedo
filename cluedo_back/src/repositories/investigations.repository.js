@@ -1,7 +1,11 @@
 import { prisma } from "./prisma.js";
 
 export async function findManyInvestigations() {
-  const result = await prisma.investigation.findMany();
+  const result = await prisma.investigation.findMany({
+    include: {
+      characters: true,
+    }
+  });
 
   return result;
 }

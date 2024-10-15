@@ -9,7 +9,7 @@ const CharacterList = ({ characters, onClick }) => {
         <Action.Link to={`${character.id}`} onClick={() => onClick(character.id)}>
           <Action.Button key={index} width="100%">
             <Container.Row justifyContent={'flex-start'} gap={'5%'}>
-              <Visual.Image src={`${character.face}`} width={'8rem'} />
+              <Visual.Image src={`/assets/img/faces/${character.face}`} width={'8rem'} />
               <Text.Name>
                 {`${character.name} - ${character.role}`}
               </Text.Name>

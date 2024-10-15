@@ -46,18 +46,18 @@ const characterHistorySlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchCharacters.pending, (state) => {
-        state.status = "loading";
-        console.log('Fetching characters: loading');
+        state.status = "loading"
+        console.log('Fetching characters: loading')
       })
       .addCase(fetchCharacters.fulfilled, (state, action) => {
-        state.characters = action.payload;
-        state.status = "success";
-        console.log('Fetched characters:', action.payload);
+        state.characters = action.payload[0].characters
+        state.status = "success"
+        console.log('Fetched characters:', action.payload)
       })
       .addCase(fetchCharacters.rejected, (state, action) => {
-        state.status = "failed";
-        state.errors = action.payload;
-        console.error('Fetching characters failed:', action.payload);
+        state.status = "failed"
+        state.errors = action.payload
+        console.error('Fetching characters failed:', action.payload)
       });
   }
 })
