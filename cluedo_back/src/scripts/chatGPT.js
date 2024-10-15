@@ -45,7 +45,6 @@ export async function queryCharacterAnswer(events, character, question, wordCoun
  
   const cautionInstruction = character.isKiller ? "Tu cherche a éviter d'être découvert. N'avoue jamais ton crime, même s'il faut mentir pour cela" : "Ne revèle pas tes secrets, sauf si l'enquêteur te confronte à des éléments concrets du descriptif de l'enquête"
   const prompt = `"Nous sommes dans un jeu d'enquête sur un meurtre dont voici le descriptif (qui sont cachés pour l'enquêteur): '${events}'. Tu es ${character.name}, ${character.role}. Tes traits de charactère sont: '${character.personality}'. Ton implication dans l'enquête est: '${character.description}'. Voici la question de l'enquêteur: '${question}'. ${cautionInstruction}. Répond directement en ${wordCount} mots maximum."`;
-  console.log(prompt)
   const result = await promptGPT(prompt);
 
   return result;

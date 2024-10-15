@@ -9,6 +9,9 @@ export async function findManyInvestigations() {
 export async function findInvestigationById(id) {
   const result = await prisma.investigation.findUnique({
     where: { id },
+    include: {
+      characters: true,
+    }
   });
 
   return result;
