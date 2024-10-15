@@ -9,13 +9,16 @@ export async function findManyInvestigations() {
 export async function findInvestigationById(id) {
   const result = await prisma.investigation.findUnique({
     where: { id },
+    include: {
+      characters: true,
+    }
   });
 
   return result;
 }
 
 export async function createInvestigation(data) {
-  const {characters, ...investigationData} = data;
+  const { characters, ...investigationData } = data;
 
   const result = await prisma.investigation.create({
     data: {

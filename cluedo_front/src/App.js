@@ -1,14 +1,13 @@
-import { Form, Visual } from './components/atoms'
+import Scene from "./templates/Scene"
+import { getEnvestigations } from "./services/Envestigations";
 
 function App() {
+
+  getEnvestigations()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <Form.Input placeholder={'Login'}></Form.Input>
-        <Form.Input placeholder={'Password'}></Form.Input>
-        <Form.Input placeholder={'Votre message'}></Form.Input>
-        <Visual.Image src={'/assets/img/stitch1.webp'}></Visual.Image>
-      </header>
+      <Scene />
     </div>
   );
 }

@@ -9,6 +9,9 @@ export async function findManyCharacters() {
 export async function findCharacterById(id) {
   const result = await prisma.character.findUnique({
     where: { id },
+    include: {
+      investigation: true,
+    }
   });
 
   return result;

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form } from '../../nanites'
 
-const TextArea = () => {
+const TextArea = (props) => {
   return (
-    <Form.TextAreaStyled />
+    <Form.TextAreaStyled {...props} />
   )
 }
 

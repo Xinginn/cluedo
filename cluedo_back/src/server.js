@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { getRoot } from './routes/getRoot.route.js';
 import { investigationsRoute } from './routes/investigations.route.js';
+import { discussionsRoute } from './routes/discussions.route.js';
 
 function main() {
   const app = express();
@@ -11,6 +12,7 @@ function main() {
   // routes
   getRoot(app);
   investigationsRoute(app);
+  discussionsRoute(app);
 
   const port = process.env.PORT || 5678;
   app.listen(port, () => {
