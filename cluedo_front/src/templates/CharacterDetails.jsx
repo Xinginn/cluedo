@@ -11,7 +11,7 @@ const CharacterDetails = () => {
   const data = {
     character: {
       name: "John Doe",
-      bodyPicture: "body_1.png",
+      bodyPicture: "/assets/img/bodies/body_1.png",
       role: "Frère de la victime",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
@@ -23,16 +23,16 @@ const CharacterDetails = () => {
       <Container.Row justifyContent="flex-end" >
         <Action.Button width="60px" height="60px">
           <Visual.Icon
-            src={'/assets/img/close-circle.svg'}
+            src={'/assets/img/icons/close-circle.svg'}
             width={'40px'}
             height={'40px'}
-            onClick={handleDenounceClick}></Visual.Icon>
+            onClick={handleDenounceClick}/>
         </Action.Button>
       </Container.Row>
-      <Container.Row  >
-        <CharacterInfos character={data.character}></CharacterInfos>
+      <Container.Row>
+        <CharacterInfos character={data.character}/>
       </Container.Row>
-      <Visual.Background url="/assets/img/background/notes.jpg" />
+      <Visual.Background url="/assets/img/backgrounds/notes.jpg" />
     </Container.Column>
   )
 }

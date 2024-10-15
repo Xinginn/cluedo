@@ -8,6 +8,7 @@ import { createGlobalStyle } from "styled-components"
 import App from './App'
 import Discussion from './templates/Discussion'
 import Note from './templates/Note'
+import CharacterDetails from './templates/CharacterDetails'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/discussion",
     element: <Discussion />,
+  },
+  {
+    path: "/characterDetails",
+    element: <CharacterDetails />,
   },
 ]);
 

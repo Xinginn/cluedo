@@ -8,7 +8,7 @@ const CharacterInfos = ({character = {}, ...props}) => {
 
   return (
     <Container.Row alignItems="flex-start">
-      <Visual.Image src={`/assets/img/${character.bodyPicture ?? ""}`} ></Visual.Image>
+      <Visual.Image src={`${character.bodyPicture ?? ""}`} ></Visual.Image>
       <Container.Column bgColor="rgba(255,255,255,0.5)" padding="8px">
         <Text.Name>{character.name ?? "No name"}</Text.Name>
         <Text.Label>{character.role ?? "No role"}</Text.Label>

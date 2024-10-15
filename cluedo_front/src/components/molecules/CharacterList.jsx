@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Action, Visual, Text } from '../atoms'
 
-const ClueList = ({ characters }) => {
+const CharacterList = ({ characters }) => {
 
   return (
     <Container.Column>
@@ -19,4 +19,4 @@ const ClueList = ({ characters }) => {
   )
 }
 
-export default ClueList
+export default CharacterList

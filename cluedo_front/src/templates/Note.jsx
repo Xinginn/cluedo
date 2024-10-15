@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, ClueList } from '../components/molecules'
+import { Header, CharacterList } from '../components/molecules'
 import { Container } from '../components/atoms'
 
 const Note = () => {
@@ -36,7 +36,7 @@ const Note = () => {
   return (
     <Container.Column>
       <Header title={data.currentScene.title} timer={data.timer} icon='close' />
-      <ClueList characters={characters}></ClueList>
+      <CharacterList characters={characters}/>
     </Container.Column>
   )
 }
