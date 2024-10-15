@@ -1,10 +1,10 @@
-import Scene from "./templates/Scene"
+import Games from "./templates/Games"
 
 function App() {
 
   return (
     <div className="App">
-      <Scene />
+      <Games />
     </div>
   );
 }
