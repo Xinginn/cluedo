@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GameCard from '../components/molecules/GameCard'
 import { Container, Action, Text } from '../components/atoms'
+import { useDispatch, useSelector } from 'react-redux'
+import { createNewInvestigation } from '../store'
+import { useNavigate } from "react-router-dom";
+
 
 const Games = () => {
+
+  const navigate = useNavigate();
+  const status = useSelector((state) => state.investigationHistory.status)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(status === 'success') {
+      navigate('/scene')
+    }
+  }, [status])
+
 
   const games = [
     {
@@ -20,7 +35,8 @@ const Games = () => {
   ]
 
   const handleNewPartie = () => {
-    console.log('New Partie')
+    dispatch(createNewInvestigation())
+
   }
 
   return (

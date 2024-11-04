@@ -10,6 +10,7 @@ import Discussion from './templates/Discussion'
 import Note from './templates/Note'
 import CharacterDetails from './templates/CharacterDetails'
 import Accuse from './templates/Accuse'
+import Scene from './templates/Scene'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: '/scene',
+    element: <Scene />,
   },
   {
     path: "/note",
