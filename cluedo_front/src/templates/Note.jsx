@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateCurrentCharacter } from '../store'
+import { updateCurrentCharacter } from '../store/characterStore'
 
 
 import { Header, CharacterList } from '../components/molecules'

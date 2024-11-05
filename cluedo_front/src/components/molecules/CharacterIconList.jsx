@@ -11,7 +11,7 @@ const CharacterIconList = ({ characters }) => {
         <Container.Grid>
             {characters.map((character, index) => (
                 <Action.Button key={index} onClick={() => handleAccuse(character.id)}>
-                    <Visual.Icon src={`/assets/img/faces/${character.face}`} />
+                    <Visual.Icon src={`${character.face}`} />
                 </Action.Button>
             ))}
         </Container.Grid>

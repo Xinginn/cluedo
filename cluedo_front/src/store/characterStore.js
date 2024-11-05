@@ -77,7 +77,7 @@ export const fetchCharacters = createAsyncThunk(
 
 export const { updateCurrentCharacter } = characterHistorySlice.actions
 
-export const store = configureStore({
+export const CharacterStore = configureStore({
   reducer: {
     characterHistory: characterHistorySlice.reducer
   }
