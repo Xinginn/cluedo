@@ -1,5 +1,5 @@
 import { createSlice, configureStore, createAsyncThunk } from '@reduxjs/toolkit'
-import { getEnvestigations } from '../services/Envestigations'
+import { getInvestigations, postInvestigation } from '../services/Investigations'
 
 const characterHistorySlice = createSlice({
   name: 'characterHistory',
@@ -66,7 +66,7 @@ export const fetchCharacters = createAsyncThunk(
   "characterHistory/fetchCharacters",
   async () => {
     try {
-      const result = await getEnvestigations()
+      const result = await getInvestigations()
       console.log('result : ', result)
       return result
     } catch (error) {
@@ -75,10 +75,55 @@ export const fetchCharacters = createAsyncThunk(
   }
 )
 
+const investigationHistorySlice = createSlice({
+  name: 'investigationHistory',
+  initialState: {
+    investigation: null,
+    status: 'idle',
+    errors: null
+  },
+  reducers: {},
+  extraReducers(builder) {
+    builder
+      .addCase(createNewInvestigation.pending, (state) => {
+        state.status = "loading"
+        console.log('Creating investigation: loading')
+      })
+      .addCase(createNewInvestigation.fulfilled, (state, action) => {
+        console.log(JSON.stringify(action.payload))
+        const { characters, ...investigation } = action.payload;
+        state.investigation = investigation;
+        // TODO inject characters in characterSlice?
+        state.status = "success"
+        console.log('Created investigation: success');
+      })
+      .addCase(createNewInvestigation.rejected, (state, action) => {
+        state.status = "failed"
+        state.errors = action.payload
+        console.error('Creating investigation failed:', action.payload)
+      });
+  }
+})
+
+export const createNewInvestigation = createAsyncThunk(
+  'investigationHistory/createNewInvestigation',
+  async () => {
+    try {
+      const result = await postInvestigation();
+      return result;
+    } catch (error) {
+      throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la creation de l'enquête")
+    }
+  }
+)
+
 export const { updateCurrentCharacter } = characterHistorySlice.actions
 
-export const CharacterStore = configureStore({
+
+
+export const store = configureStore({
   reducer: {
-    characterHistory: characterHistorySlice.reducer
+    characterHistory: characterHistorySlice.reducer,
+    investigationHistory: investigationHistorySlice.reducer,
   }
 })
