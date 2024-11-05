@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { CharacterStore } from './store/characterStore'
+import { store } from './store'
 import { Provider } from 'react-redux'
 import { createGlobalStyle } from "styled-components"
 
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={CharacterStore}>
+    <Provider store={store}>
       <RouterProvider router={router} />
       <GlobalStyle />
     </Provider>

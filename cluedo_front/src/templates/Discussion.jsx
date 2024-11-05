@@ -8,7 +8,7 @@ const Discussion = () => {
 
   const currentCharacter = useSelector((state) => {
     return state.characterHistory.currentCharacter;
-  });
+  })
 
   const data = {
     timer: '07:36',

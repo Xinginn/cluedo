@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import GameCard from '../components/molecules/GameCard'
 import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
-import { createNewInvestigation } from '../store'
+import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ const Games = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if(status === 'success') {
+    if (status === 'success') {
       navigate('/scene')
     }
   }, [status])

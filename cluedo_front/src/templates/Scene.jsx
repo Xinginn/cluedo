@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchCharacters, updateCurrentCharacter } from '../store/characterStore'
+import { updateCurrentCharacter } from '../store/characterStore'
 
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'
@@ -8,35 +8,31 @@ import { Visual } from '../components/atoms'
 
 const Scene = () => {
 
-  const [currentScene, setCurrentScene] = useState({})
 
-  const characters = useSelector((state) => state.characterHistory.characters)
+  const characters = useSelector((state) => {
+    return state.investigationHistory.investigation.characters
+  })
+
+  console.log(characters)
+
+  const [currentScene, setCurrentScene] = useState({
+    url: '/assets/img/backgrounds/cabaret.png',
+    title: 'Cabaret',
+    leftScene: {
+      title: 'street',
+      url: '/assets/img/backgrounds/street.png'
+    },
+    rightScene: {
+      title: 'slum',
+      url: '/assets/img/backgrounds/slum.png'
+    }
+  })
 
   const dispatch = useDispatch()
 
-  const setCurrentCharacter = (id) => {
-    dispatch(updateCurrentCharacter({ id }))
+  const setCurrentCharacter = (character) => {
+    dispatch(updateCurrentCharacter(character))
   }
-
-  useEffect(() => {
-    console.log("Dispatching fetchCharacters...")
-    dispatch(fetchCharacters())
-  }, [])
-
-  useEffect(() => {
-    setCurrentScene({
-      url: '/assets/img/backgrounds/cabaret.png',
-      title: 'Cabaret',
-      leftScene: {
-        title: 'street',
-        url: '/assets/img/backgrounds/street.png'
-      },
-      rightScene: {
-        title: 'slum',
-        url: '/assets/img/backgrounds/slum.png'
-      }
-    })
-  }, [])
 
   const timer = '07:29'
 
