@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateCurrentCharacter } from '../store/characterStore'
+import { updateCurrentCharacter } from '../store/currentCharacterStore'
 
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'

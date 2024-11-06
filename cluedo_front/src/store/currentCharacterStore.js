@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const characterHistorySlice = createSlice({
-  name: 'characterHistory',
+export const currentCharacterHistorySlice = createSlice({
+  name: 'currentCharacterHistory',
   initialState: {
     currentCharacter: {
       id: 1,
@@ -21,4 +21,4 @@ export const characterHistorySlice = createSlice({
   }
 })
 
-export const { updateCurrentCharacter } = characterHistorySlice.actions
+export const { updateCurrentCharacter } = currentCharacterHistorySlice.actions

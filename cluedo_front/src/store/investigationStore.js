@@ -62,7 +62,7 @@ export const createNewInvestigation = createAsyncThunk(
 )
 
 export const fetchCharacters = createAsyncThunk(
-  "characterHistory/fetchCharacters",
+  "currentCharacterHistorySlice/fetchCharacters",
   async () => {
     try {
       const result = await getInvestigations()

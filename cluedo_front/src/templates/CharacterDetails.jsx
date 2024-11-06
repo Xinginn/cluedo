@@ -7,7 +7,7 @@ import { Action, Container, Visual } from "../components/atoms"
 const CharacterDetails = () => {
 
   const character = useSelector((state) => {
-    return state.characterHistory.currentCharacter.character
+    return state.currentCharacterHistorySlice.currentCharacter.character
   })
 
   return (

@@ -8,7 +8,7 @@ import { Container, Visual } from '../components/atoms'
 const Accuse = () => {
 
     const characters = useSelector((state) => {
-        return state.characterHistory.characters;
+        return state.currentCharacterHistorySlice.characters;
     })
 
     return (

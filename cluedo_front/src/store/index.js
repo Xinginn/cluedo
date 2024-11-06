@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { characterHistorySlice } from "./characterStore"
+import { currentCharacterHistorySlice } from "./currentCharacterStore"
 import { investigationHistorySlice } from "./investigationStore"
 
 export const store = configureStore({
   reducer: {
-    characterHistory: characterHistorySlice.reducer,
+    currentCharacterHistorySlice: currentCharacterHistorySlice.reducer,
     investigationHistory: investigationHistorySlice.reducer,
   }
 })
