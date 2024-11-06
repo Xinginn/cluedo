@@ -1,15 +1,11 @@
 import axios from "axios";
 
 // this method is a wrapper for prompting ChatGPT with a prompt that has been constructed in methods below
-export async function promptGPT(prompt, temperature = 0.5) {
+export async function promptGPT(messages, response_format = undefined, temperature = 0.5, model = "gpt-4o-mini") {
   const payload = {
-    model: "gpt-4o-mini",
-    messages: [
-      {
-        role: "user",
-        content: prompt
-      }
-    ],
+    model,
+    messages,
+    response_format,
     temperature,
   }
 
@@ -19,26 +15,117 @@ export async function promptGPT(prompt, temperature = 0.5) {
 }
 
 
+export async function queryStructuredInvestigationDetails() {
+  const messages = [
+    {
+      role: "system",
+      content: "Tu es l'assistant d'un écrivain qui écrit un roman policier. Ta tâche est d'imaginer un crime en respectant le schéma. Il faut imaginer le nom de la victime (victimName), comment s'est déroulé le crime (events) en 150 mots maximums, et le rapport d'autopsie (autopsy) en 75 mots maximum. Pour le descriptif des evenements du crime, imagine les fait, qui a tué la victime, comment s'est passé le crime, et le lieux. Pas d'introduction, uniquement les faits. Invente les prénom et nom complets des personnages si besoin. Pour l'autopsie, sois bref, donne juste où le corps a été retrouvé et l'analyse neutre du corps, ne donne pas d'éléments qui permettraient immédiatement au lecteur de trouver le coupable.`"
+    },
+    {
+      role: "user",
+      content: "L'intrigue se passe en 1920 à Chicago, ambiance film noir. La victime a été tuée par un de ses proches. Imagine les evenements et l'autopsie."
+    }
+  ];
 
-export async function queryInvestigationEvents(victimName = 'May Upwhorth', wordCount = 100) {
-  const prompt = `Meutre dans les années 1920. La victime, ${victimName} a été tué(e) par un de ses proches. Imagine les evenements qui se sont passés et qu'un joueur doit éludicer. Uniquement les evenements cachés, pas d'introduction, uniquement les faits. ${wordCount} mots maximums, un seul paragraphe. Invente les prenom et nom complets des personnages si besoin.`
+  const response_format = {
+    type: "json_schema",
+    json_schema: {
+      name: "output",
+      strict: true,
+      schema: {
+        type: "object",
+        properties: {
+          events: {
+            type: "string"
+          },
+          autopsy: {
+            type: "string"
+          },
+          victimName: {
+            type: "string"
+          }
+        },
+        required: [
+          "events",
+          "autopsy",
+          "victimName"
+        ],
+        additionalProperties: false
+      }
 
-  const result = await promptGPT(prompt);
+    }
+  }
+  const result = await promptGPT(messages, response_format)
+
   return result;
 }
 
-export async function queryInvestigationAutopsy(events, wordCount = 50) {
-  const prompt = `Voici un descriptif de crime: '${events}'. Donne moi un rapport d'autopsie, en ${wordCount} mots ou moins. Sois bref. Donne seulement la cause du décès. Seulement le contenu, pas d'introduction.`
-  const result = await promptGPT(prompt);
+export async function queryStructuredSuspects(events, suspectsNumber = 4, wordCount = 75) {
+  const messages = [
+    {
+      role: "system",
+      content: `Tu es un l'assistant d'un écrivain qui écrit un roman policier se déroulant dans les années 1920. Tu dois générer une liste de suspects à partir de la description du crime, en respectant le schéma. Pour chaque suspect, tu dois inventer un nom et prénom (name), définir son genre 'male' ou 'female' (gender), son role dans l'affaire (role) par exemple 'Oncle de la vicitime' ou 'Serveuse au bar', sa personalité (personality) en trois adjectifs, son historique relatif au moment du crime avec ses préocupations et secrets (description) en ${wordCount} mots maximum, et si il ou elle a tué la vicitime ou non (isKiller). Il doit obligatoirement y avoir un seul tueur ou tueuse (mais il peut y avoir un complice, eventuellement). Ne décris pas la victime, seulement les suspects. Ne génére par d'enquêteur, d'inspecteur ou de membre des forces de police come role.`
+    },
+    {
+      role: "user",
+      content: `Génère ${suspectsNumber} suspects. Voici la description de crime: '${events}'`
+    }
+  ];
 
-  return result;
-}
+  const response_format = {
+    type: "json_schema",
+    json_schema: {
+      name: "suspects",
+      strict: true,
+      schema: {
+        type: "object",
+        properties: {
+          suspects: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                name: {
+                  type: "string"
+                },
+                gender: {
+                  type: "string"
+                },
+                role: {
+                  type: "string"
+                },
+                personality: {
+                  type: "string"
+                },
+                description: {
+                  type: "string"
+                },
+                isKiller: {
+                  type: "boolean"
+                }
+              },
+              required: [
+                "name",
+                "gender",
+                "personality",
+                "role",
+                "description",
+                "isKiller"
+              ],
+              additionalProperties: false
+            }
+          }
+        },
+        required: [
+          "suspects"
+        ],
+        additionalProperties: false
+      }
+    }
+  }
 
-export async function querySuspects(events, suspectsNumber = 4, wordCount = 75) {
-  const prompt = `Voici un descriptif de crime: '${events}'. Décris les ${suspectsNumber} suspects (mais pas victime) dans cette affaire (mais pas la victime, et pas de membres de la police). Donne le nom, la relation avec la victime, la personnalité en quelques adjectifs, et une description du personnage avec son historique, ses préoccupation et ses secrets. Nom, relation, personnalité et description doivent être séparés par le symbole '/'. Utilise ${wordCount} mots maximum par personnage. Uniquement le texte, pas de mise en forme. Attrention! Sépare chaque descriptif de personnage par le symbole 'µ', c'est impératif.`
-  const result = await promptGPT(prompt);
-
-  return result;
+  const result = await promptGPT(messages, response_format)
+  return result
 }
 
 export async function queryCharacterAnswer(events, character, question, wordCount = 70) {
