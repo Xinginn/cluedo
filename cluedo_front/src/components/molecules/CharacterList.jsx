@@ -6,7 +6,7 @@ const CharacterList = ({ characters, onClick }) => {
   return (
     <Container.Column>
       {characters.map((character, index) => (
-        <Action.Link to={`${character.id}`} onClick={() => onClick(character.id)}>
+        <Action.Link to={`${character.id}`} onClick={() => onClick(character)}>
           <Action.Button key={index} width="100%">
             <Container.Row justifyContent={'flex-start'} gap={'5%'}>
               <Visual.Image src={`/assets/img/faces/${character.face}`} width={'8rem'} />

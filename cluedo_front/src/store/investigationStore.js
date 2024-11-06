@@ -36,12 +36,10 @@ export const investigationHistorySlice = createSlice({
         console.log('Creating investigation: loading')
       })
       .addCase(createNewInvestigation.fulfilled, (state, action) => {
-        console.log(JSON.stringify(action.payload))
-        const { characters, ...investigation } = action.payload;
-        state.investigation = investigation;
-        // TODO inject characters in characterSlice?
+        const { characters, ...investigation } = action.payload
+        state.investigation = investigation
         state.status = "success"
-        console.log('Created investigation: success');
+        console.log('Created investigation: success')
       })
       .addCase(createNewInvestigation.rejected, (state, action) => {
         state.status = "failed"
@@ -68,7 +66,6 @@ export const fetchCharacters = createAsyncThunk(
   async () => {
     try {
       const result = await getInvestigations()
-      console.log('result : ', result)
       return result
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la récupération des personnages")

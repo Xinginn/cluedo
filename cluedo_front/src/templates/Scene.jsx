@@ -13,8 +13,6 @@ const Scene = () => {
     return state.investigationHistory.investigation.characters
   })
 
-  console.log(characters)
-
   const [currentScene, setCurrentScene] = useState({
     url: '/assets/img/backgrounds/cabaret.png',
     title: 'Cabaret',

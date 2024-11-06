@@ -11,7 +11,7 @@ const CharactersInScene = ({ characters, setCurrentCharacter }) => {
             key={index}
             width="100px"
             to={'/discussion'}
-            onClick={() => setCurrentCharacter(character.id)}
+            onClick={() => setCurrentCharacter(character)}
           >
             <Action.Button width="100px">
               <Visual.Image width='100%' src={`/assets/img/faces/${character.face}`}></Visual.Image>

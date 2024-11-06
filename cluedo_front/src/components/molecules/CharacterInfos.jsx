@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Text, Visual } from '../atoms';
 
 
-const CharacterInfos = ({ character = {}, ...props }) => {
+const CharacterInfos = ({ character = {} }) => {
 
   return (
     <Container.Row alignItems="flex-start">
