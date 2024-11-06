@@ -9,8 +9,8 @@ import App from './App'
 import Discussion from './templates/Discussion'
 import Note from './templates/Note'
 import CharacterDetails from './templates/CharacterDetails'
-import Accuse from './templates/Accuse'
 import Scene from './templates/Scene'
+import Result from './templates/Result'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -58,8 +58,8 @@ const router = createBrowserRouter([
     element: <CharacterDetails />,
   },
   {
-    path: "/accuse",
-    element: <Accuse />,
+    path: "/result",
+    element: <Result />,
   },
 ]);
 

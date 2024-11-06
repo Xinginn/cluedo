@@ -19,6 +19,17 @@ export const investigationHistorySlice = createSlice({
           body: 'body_1.png',
           description: "Edward a toujours vécu dans l'ombre de la fortune de May. En quête de pouvoir, il a élaboré un plan machiavélique pour s'emparer de son héritage. Son charme dissimule une jalousie profonde et une ambition démesurée. Il cache un passé d'échecs financiers et une dépendance au jeu, ce qui le pousse à commettre l'irréparable pour assurer son avenir. Charles Whitmore ",
           personnality: "Manipulateur, ambitieux, sournois",
+          isKiller: true,
+          name: 'Edward Harrington',
+          role: 'Cousin',
+          gender: 'male'
+        },
+        {
+          id: 2,
+          face: 'face_2.png',
+          body: 'body_2.png',
+          description: "Edward a toujours vécu dans l'ombre de la fortune de May. En quête de pouvoir, il a élaboré un plan machiavélique pour s'emparer de son héritage. Son charme dissimule une jalousie profonde et une ambition démesurée. Il cache un passé d'échecs financiers et une dépendance au jeu, ce qui le pousse à commettre l'irréparable pour assurer son avenir. Charles Whitmore ",
+          personnality: "Manipulateur, ambitieux, sournois",
           isKiller: false,
           name: 'Edward Harrington',
           role: 'Cousin',
