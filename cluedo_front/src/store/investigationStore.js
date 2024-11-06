@@ -33,7 +33,7 @@ export const investigationHistorySlice = createSlice({
           isKiller: false,
           name: 'Edward Harrington',
           role: 'Cousin',
-          gender: 'male'
+          gender: 'female'
         }
       ]
     },
