@@ -1,25 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { scenes } from '../data/Scenes'
+
 export const currentSceneHistorySlice = createSlice({
   name: 'currentSceneHistory',
   initialState: {
-    currentScene: {
-      id: 1,
-      url: '/assets/img/backgrounds/cabaret.png',
-      title: 'Cabaret',
-      leftScene: {
-        title: 'street',
-        url: '/assets/img/backgrounds/street.png'
-      },
-      rightScene: {
-        title: 'slum',
-        url: '/assets/img/backgrounds/slum.png'
-      }
-    }
+    currentScene: scenes[1]
   },
   reducers: {
     updateCurrentScene: (state, action) => {
-      state.currentScene = action.payload
+      state.currentScene = scenes.filter((scene) => scene.id === action.payload)[0]
     }
   }
 })
