@@ -5,17 +5,21 @@ import { updateCurrentCharacter } from '../store/currentCharacterStore'
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'
 import { Visual } from '../components/atoms'
-import { updateCurrentScene } from '../store/currentSceneStore'
+import { updateCharacters, updateCurrentScene } from '../store/currentSceneStore'
 
 const Scene = () => {
 
 
   const characters = useSelector((state) => {
-    return state.investigationHistorySlice.investigation.characters
+    return state.currentSceneHistorySlice.characters
   })
   const currentScene = useSelector((state) => {
     return state.currentSceneHistorySlice.currentScene
   })
+
+  const handleSceneChange = (scene) => {
+    dispatch(updateCharacters({ characters, scene }))
+  }
 
   const setCurrentScene = (scene) => {
     dispatch(updateCurrentScene(scene))
@@ -32,7 +36,7 @@ const Scene = () => {
   return (
     <Container.Column width={'100%'}>
       <Header title={currentScene.title} timer={timer} link={'/note'} icon={'book'} />
-      <MovementIcons currentScene={currentScene} setCurrentScene={setCurrentScene} />
+      <MovementIcons currentScene={currentScene} setCurrentScene={handleSceneChange} />
       <CharactersInScene characters={characters} setCurrentCharacter={setCurrentCharacter} />
       <Visual.Background url={currentScene.url} />
     </Container.Column>

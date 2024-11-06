@@ -21,7 +21,8 @@ export const investigationHistorySlice = createSlice({
           personnality: "Manipulateur, ambitieux, sournois",
           isKiller: false,
           name: 'Edward Harrington',
-          role: 'Cousin'
+          role: 'Cousin',
+          gender: 'male'
         }
       ]
     },
