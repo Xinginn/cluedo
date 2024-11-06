@@ -7,14 +7,14 @@ import { Action, Container, Visual } from "../components/atoms"
 const CharacterDetails = () => {
 
   const character = useSelector((state) => {
-    return state.characterHistory.currentCharacter
+    return state.currentCharacterHistorySlice.currentCharacter.character
   })
 
   return (
     <Container.Column justifyContent="space-between" height="100vh">
       <Header title="Dossier du suspect" link="/note" icon="go-back"></Header>
-      <Container.Row justifyContent="flex-end" >
-        <Action.Link to={'/accuse'}>
+      <Container.Row justifyContent="flex-end">
+        <Action.Link to={'/result'}>
           <Action.Button width="60px" height="60px">
             <Visual.Icon
               src={'/assets/img/icons/hammer-law.svg'}

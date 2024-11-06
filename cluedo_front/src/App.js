@@ -1,13 +1,10 @@
-import Scene from "./templates/Scene"
-import { getEnvestigations } from "./services/Envestigations";
+import Games from "./templates/Games"
 
 function App() {
 
-  getEnvestigations()
-
   return (
     <div className="App">
-      <Scene />
+      <Games />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateCurrentCharacter } from '../store'
+import { updateCurrentCharacter } from '../store/currentCharacterStore'
 
 
 import { Header, CharacterList } from '../components/molecules'
@@ -11,11 +11,11 @@ const Note = () => {
   const dispatch = useDispatch()
 
   const characters = useSelector((state) => {
-    return state.characterHistory.characters;
+    return state.investigationHistorySlice.investigation.characters
   })
 
-  const setCurrentCharacter = (id) => {
-    dispatch(updateCurrentCharacter({ id }))
+  const setCurrentCharacter = (character) => {
+    dispatch(updateCurrentCharacter({ character }))
   }
 
   const data = {
@@ -34,7 +34,7 @@ const Note = () => {
 
   return (
     <Container.Column>
-      <Header title={data.currentScene.title} timer={data.timer} link='/' icon='go-back' />
+      <Header title={data.currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
       <Visual.Background url={'/assets/img/backgrounds/notes.jpg'} />
     </Container.Column>
