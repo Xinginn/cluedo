@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Games = () => {
 
   const navigate = useNavigate();
-  const status = useSelector((state) => state.investigationHistory.status)
+  const status = useSelector((state) => state.investigationHistorySlice.status)
   const dispatch = useDispatch()
 
   useEffect(() => {

@@ -5,26 +5,21 @@ import { updateCurrentCharacter } from '../store/currentCharacterStore'
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'
 import { Visual } from '../components/atoms'
+import { updateCurrentScene } from '../store/currentSceneStore'
 
 const Scene = () => {
 
 
   const characters = useSelector((state) => {
-    return state.investigationHistory.investigation.characters
+    return state.investigationHistorySlice.investigation.characters
+  })
+  const currentScene = useSelector((state) => {
+    return state.currentSceneHistorySlice.currentScene
   })
 
-  const [currentScene, setCurrentScene] = useState({
-    url: '/assets/img/backgrounds/cabaret.png',
-    title: 'Cabaret',
-    leftScene: {
-      title: 'street',
-      url: '/assets/img/backgrounds/street.png'
-    },
-    rightScene: {
-      title: 'slum',
-      url: '/assets/img/backgrounds/slum.png'
-    }
-  })
+  const setCurrentScene = (scene) => {
+    dispatch(updateCurrentScene(scene))
+  }
 
   const dispatch = useDispatch()
 

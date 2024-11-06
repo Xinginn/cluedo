@@ -11,7 +11,7 @@ const Note = () => {
   const dispatch = useDispatch()
 
   const characters = useSelector((state) => {
-    return state.investigationHistory.investigation.characters
+    return state.investigationHistorySlice.investigation.characters
   })
 
   const setCurrentCharacter = (character) => {
