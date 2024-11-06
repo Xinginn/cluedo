@@ -9,7 +9,7 @@ const CharacterList = ({ characters, onClick, accuse }) => {
         <Action.Link key={index} to={!accuse ? `${character.id}` : null} onClick={() => { if (!accuse) onClick(character) }}>
           <Action.Button width="100%">
             <Container.Row justifyContent={'flex-start'} gap={'5%'}>
-              <Visual.Image src={`/assets/img/faces/${character.face}`} width={'8rem'} />
+              <Visual.Image src={`/assets/img/faces/${character.gender}/${character.face}`} width={'8rem'} />
               {
                 accuse ?
                   <Text.Paragraph>

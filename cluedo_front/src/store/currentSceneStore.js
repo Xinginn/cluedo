@@ -59,7 +59,7 @@ export const currentSceneHistorySlice = createSlice({
           "body": "body_1.png",
           "face": "face_1.png",
           "name": "Margaret Hargrove",
-          "gender": "female",
+          "gender": "male",
           "role": "Amie de la victime",
           "personality": "Joviale, Intrigante, Curieuse",
           "description": "Margaret Hargrove, amie proche de May, était présente au dîner familial. Elle a toujours été celle qui posait trop de questions et fouillait dans les affaires des autres. Ce soir-là, elle était préoccupée par le comportement d'Edward et avait remarqué la tension. Bien qu'elle ait un penchant pour le commérage, elle n'a pas tué May. Cependant, elle pourrait détenir des informations cruciales sur les menaces que May a reçues.",
