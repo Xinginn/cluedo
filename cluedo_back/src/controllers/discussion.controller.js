@@ -6,7 +6,7 @@ export async function postDiscussion(req, res) {
     const question = req.body.prompt;
     const characterId = req.body.characterId;
 
-    const { investigation, ...characterData} = await findCharacterById(characterId);
+    const { investigation, ...characterData } = await findCharacterById(characterId);
     const result = await queryCharacterAnswer(investigation.events, characterData, question);
 
     res.status(200).send(result)
