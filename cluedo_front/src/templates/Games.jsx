@@ -4,16 +4,20 @@ import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom";
+import { updateCharacters } from '../store/currentSceneStore'
 
 
 const Games = () => {
 
   const navigate = useNavigate();
   const status = useSelector((state) => state.investigationHistorySlice.status)
+  const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
   const dispatch = useDispatch()
 
   useEffect(() => {
     if (status === 'success') {
+      const scene = 1
+      dispatch(updateCharacters({ characters, scene }))
       navigate('/scene')
     }
   }, [status])
@@ -36,6 +40,7 @@ const Games = () => {
 
   const handleNewPartie = () => {
     dispatch(createNewInvestigation())
+
 
   }
 

@@ -48,8 +48,7 @@ export const investigationHistorySlice = createSlice({
         console.log('Creating investigation: loading')
       })
       .addCase(createNewInvestigation.fulfilled, (state, action) => {
-        const { characters, ...investigation } = action.payload
-        state.investigation = investigation
+        state.investigation = action.payload
         state.status = "success"
         console.log('Created investigation: success')
       })
@@ -57,7 +56,7 @@ export const investigationHistorySlice = createSlice({
         state.status = "failed"
         state.errors = action.payload
         console.error('Creating investigation failed:', action.payload)
-      });
+      })
   }
 })
 

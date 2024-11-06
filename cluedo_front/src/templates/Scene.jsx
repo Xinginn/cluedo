@@ -21,10 +21,6 @@ const Scene = () => {
     dispatch(updateCharacters({ characters, scene }))
   }
 
-  const setCurrentScene = (scene) => {
-    dispatch(updateCurrentScene(scene))
-  }
-
   const dispatch = useDispatch()
 
   const setCurrentCharacter = (character) => {
