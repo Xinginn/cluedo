@@ -1,17 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { store } from './store'
 import { Provider } from 'react-redux'
 import { createGlobalStyle } from "styled-components"
-
 import App from './App'
-import Discussion from './pages/Discussion'
-import Note from './pages/Note'
-import CharacterDetails from './pages/CharacterDetails'
-import Scene from './pages/Scene'
-import Result from './pages/Result'
-
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -36,38 +28,12 @@ const GlobalStyle = createGlobalStyle`
   }
     */
 `
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/scene",
-    element: <Scene />,
-  },
-  {
-    path: "/note",
-    element: <Note />,
-  },
-  {
-    path: "/discussion",
-    element: <Discussion />,
-  },
-  {
-    path: "/note/:id",
-    element: <CharacterDetails />,
-  },
-  {
-    path: "/result",
-    element: <Result />,
-  },
-]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <App />
       <GlobalStyle />
     </Provider>
   </React.StrictMode>
