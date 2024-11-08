@@ -8,10 +8,12 @@ export async function postDiscussion(req, res) {
     const characterId = req.body.characterId;
 
     const { investigation, discussions, ...characterData } = await findCharacterById(characterId);
-    const answer = await queryCharacterAnswer(investigation.events, discussions, characterData, prompt);
+
+    const answer = await queryCharacterAnswer(investigation, discussions, characterData, prompt);
     await createDiscussion({ prompt, answer, characterId })
     res.status(200).send(answer)
 
+    return;
   } catch (error) {
     res.status(500).send(`Server encountered an error: ${error}`);
     console.log(error)
