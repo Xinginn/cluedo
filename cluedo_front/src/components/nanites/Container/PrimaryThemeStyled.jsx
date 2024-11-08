@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ThemeStyled = styled.div`
+const PrimaryThemeStyled = styled.div`
   display: flex;
   flex-direction: row;
   align-items: ${(props) => props.alignItems ?? "center"};
@@ -13,4 +13,4 @@ const ThemeStyled = styled.div`
   background-color: ${(props) => props.theme.bgColor.primary};
 `;
 
-export default ThemeStyled
+export default PrimaryThemeStyled

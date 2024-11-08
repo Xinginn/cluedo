@@ -42,13 +42,13 @@ function App() {
     },
   ])
 
-  const [isAlternative, setIsAlternative] = useState(false)
-  const [theme, setTheme] = useState({ bgColor: { primary: '#fcdd62' } })
+  const [isAlternative, setIsAlternative] = useState(true)
+  const [theme, setTheme] = useState({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" } })
 
   useEffect(() => {
     if (isAlternative)
-      setTheme({ bgColor: { primary: 'red' } })
-    else setTheme({ bgColor: { primary: '#fcdd62' } })
+      setTheme({ bgColor: { primary: '#5cbbf2', secondary: '#5c9ded' } })
+    else setTheme({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" } })
   }, [isAlternative])
 
   const changeAlternativeTheme = () => {
