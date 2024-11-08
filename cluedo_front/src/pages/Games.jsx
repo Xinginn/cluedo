@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import GameCard from '../components/molecules/GameCard'
 import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,6 +6,8 @@ import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom";
 import { updateCharacters } from '../store/currentSceneStore'
 import Loader from '../components/molecules/Loader'
+import { Header } from '../components/molecules'
+import { AlternativeThemeProvider, AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 
 const Games = () => {
@@ -14,6 +16,7 @@ const Games = () => {
   const status = useSelector((state) => state.investigationHistorySlice.status)
   const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
   const dispatch = useDispatch()
+  const { toggleTheme } = useContext(AlternativeThemeProviderContext)
 
   useEffect(() => {
     if (status === 'success') {
@@ -48,6 +51,7 @@ const Games = () => {
       {status === 'loading' ?
         <Loader></Loader>
         : null}
+      <Action.Button onClick={toggleTheme}>Changer de theme</Action.Button>
       <Container.Grid>
         {games.map((game, index) => (
           <GameCard game={game} key={index} />
