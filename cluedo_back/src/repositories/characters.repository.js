@@ -11,6 +11,7 @@ export async function findCharacterById(id) {
     where: { id },
     include: {
       investigation: true,
+      discussions: true,
     }
   });
 
@@ -21,6 +22,9 @@ export async function findCharacterById(id) {
 export async function createCharacter(data) {
   const result = await prisma.character.create({
     data,
+    include: {
+      discussions: true,
+    }
   });
 
   return result;
