@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom";
 import { updateCharacters } from '../store/currentSceneStore'
-import Loading from '../components/molecules/Loading'
+import Loader from '../components/molecules/Loader'
 
 
 const Games = () => {
@@ -46,7 +46,7 @@ const Games = () => {
   return (
     <Container.Column width={'100%'}>
       {status === 'loading' ?
-        <Loading></Loading>
+        <Loader></Loader>
         : null}
       <Container.Grid>
         {games.map((game, index) => (
