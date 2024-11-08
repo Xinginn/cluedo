@@ -36,6 +36,17 @@ model Character {
   description String
   isKiller    Boolean @default(false)
 
+  discussions     Discussion[]
   investigationId Int
   investigation   Investigation @relation(fields: [investigationId], references: [id])
+}
+
+model Discussion {
+  id        Int      @unique @default(autoincrement())
+  prompt    String?
+  answer    String
+  createdAt DateTime @default(now())
+
+  characterId Int
+  character   Character @relation(fields: [characterId], references: [id])
 }

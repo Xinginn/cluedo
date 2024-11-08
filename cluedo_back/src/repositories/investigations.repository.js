@@ -14,7 +14,11 @@ export async function findInvestigationById(id) {
   const result = await prisma.investigation.findUnique({
     where: { id },
     include: {
-      characters: true,
+      characters: {
+        include: {
+          discussions: true,
+        }
+      },
     }
   });
 
@@ -32,7 +36,11 @@ export async function createInvestigation(data) {
       }
     },
     include: {
-      characters: true,
+      characters: {
+        include: {
+          discussions: true,
+        }
+      },
     }
   });
 
