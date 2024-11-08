@@ -128,19 +128,23 @@ export async function queryStructuredSuspects(events, suspectsNumber = 4, wordCo
   return result
 }
 
-export async function queryCharacterAnswer(events, discussions, character, question, wordCount = 30) {
+export async function queryCharacterAnswer(investigation, discussions, character, question, wordCount = 30) {
   const culpabilityString = character.isKiller ? 'Tu es le tueur' : 'Tu es innocent';
   const cautionInstruction = character.isKiller ? "Tu dois éviter à tout prix d'être découvert. N'avoue jamais ton crime, même s'il faut mentir, ou parfois détourner l'attention sur d'autres personnes." : "Ne revèle pas tes secrets, sauf si l'enquêteur te confronte à des éléments concrets du descriptif de l'enquête"
 
   const discussionHistoryString = discussions.reduce((stack, current) => {
     const newLine = current.prompt ? `(Enqueteur) ${current.prompt} (${character.name}) ${current.answer}` : `(${character.name}) ${current.answer}`
     return `${stack} ${newLine}`
-  }, "")
+  }, "");
+
+  const otherCharactersString = investigation.characters.reduce((stack, current) => {
+    return current.id === character.id ? stack : `${stack} ${current.name}, ${current.role};`
+  }, "");
 
   const messages = [
     {
       role: "system",
-      content: `Tu es un suspect dans une affaire criminelle dont la description est: '${events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes.`
+      content: `Tu es un suspect dans une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Les autres protagonistes sont: '${otherCharactersString}'. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes. Uniquement si tu n'est pas coupable, tu as 20% de chances de parler de lui si c'est pertinent. Sinon, parle de quelqu'un d'autre.`
     },
     {
       role: "user",

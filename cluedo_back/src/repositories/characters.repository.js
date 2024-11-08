@@ -10,8 +10,18 @@ export async function findCharacterById(id) {
   const result = await prisma.character.findUnique({
     where: { id },
     include: {
-      investigation: true,
       discussions: true,
+      investigation: {
+        include: {
+          characters: {
+            select: {
+              id: true,
+              name: true,
+              role: true,
+            }
+          }
+        }
+      },
     }
   });
 
