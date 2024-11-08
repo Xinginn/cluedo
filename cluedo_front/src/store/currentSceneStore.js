@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { useSelector } from 'react-redux'
 
 import { scenes } from '../data/Scenes'
 import { getRandomElements } from '../components/scripts/getRandomElements'
+import { roll } from '../components/scripts/roll'
 
 export const currentSceneHistorySlice = createSlice({
   name: 'currentSceneHistory',
@@ -28,10 +28,17 @@ export const currentSceneHistorySlice = createSlice({
     },
     updateCharacters: (state, action) => {
       const characters = action.payload.characters
+      const currentSceneCharacterIds = state.characters.reduce((stack, current) => {
+        return [...stack, current.id]
+      }, [])
+      const filteredCharacters = characters.filter((character) => !currentSceneCharacterIds.includes(character.id))
 
       const newScene = action.payload.scene
       state.currentScene = scenes.filter((scene) => scene.id === newScene)[0]
-      const newCharacters = getRandomElements(characters, 2)
+      let nbCharacter = 2
+      if (roll(2) > 0)
+        nbCharacter = 3
+      const newCharacters = getRandomElements(filteredCharacters, nbCharacter)
       state.characters = newCharacters
     }
   }

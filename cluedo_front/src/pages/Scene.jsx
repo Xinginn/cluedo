@@ -10,8 +10,11 @@ import { updateCharacters, updateCurrentScene } from '../store/currentSceneStore
 const Scene = () => {
 
 
-  const characters = useSelector((state) => {
+  const currentSceneCharacters = useSelector((state) => {
     return state.currentSceneHistorySlice.characters
+  })
+  const characters = useSelector((state) => {
+    return state.investigationHistorySlice.investigation.characters
   })
   const currentScene = useSelector((state) => {
     return state.currentSceneHistorySlice.currentScene
@@ -33,7 +36,7 @@ const Scene = () => {
     <Container.Column width={'100%'}>
       <Header title={currentScene.title} timer={timer} link={'/note'} icon={'book'} />
       <MovementIcons currentScene={currentScene} setCurrentScene={handleSceneChange} />
-      <CharactersInScene characters={characters} setCurrentCharacter={setCurrentCharacter} />
+      <CharactersInScene characters={currentSceneCharacters} setCurrentCharacter={setCurrentCharacter} />
       <Visual.Background url={currentScene.url} />
     </Container.Column>
   )
