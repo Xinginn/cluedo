@@ -1,4 +1,4 @@
-import Games from "./templates/Games"
+import Games from "./pages/Games"
 
 function App() {
 
