@@ -144,7 +144,7 @@ export async function queryCharacterAnswer(investigation, discussions, character
   const messages = [
     {
       role: "system",
-      content: `Tu es un suspect dans une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Les autres protagonistes sont: '${otherCharactersString}'. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes. Uniquement si tu n'est pas coupable, tu as 20% de chances de parler de lui si c'est pertinent. Sinon, parle de quelqu'un d'autre.`
+      content: `Tu es un suspect dans une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Les autres protagonistes sont: '${otherCharactersString}'. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes. Uniquement si tu n'est pas coupable, tu as 20% de chances de parler de lui si c'est pertinent, et 20% de chances de donner une fausse piste sur un autre personnage. Sinon, parle de quelqu'un d'autre.`
     },
     {
       role: "user",
