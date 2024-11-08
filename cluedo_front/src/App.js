@@ -1,3 +1,5 @@
+import { store } from './store'
+import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import Games from "./pages/Games"
@@ -38,7 +40,9 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }
 
