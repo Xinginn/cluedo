@@ -6,11 +6,11 @@ import { Provider } from 'react-redux'
 import { createGlobalStyle } from "styled-components"
 
 import App from './App'
-import Discussion from './templates/Discussion'
-import Note from './templates/Note'
-import CharacterDetails from './templates/CharacterDetails'
-import Scene from './templates/Scene'
-import Result from './templates/Result'
+import Discussion from './pages/Discussion'
+import Note from './pages/Note'
+import CharacterDetails from './pages/CharacterDetails'
+import Scene from './pages/Scene'
+import Result from './pages/Result'
 
 
 const GlobalStyle = createGlobalStyle`
