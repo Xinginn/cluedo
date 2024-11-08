@@ -9,28 +9,23 @@ const Discussion = () => {
   const currentCharacter = useSelector((state) => {
     return state.currentCharacterHistorySlice.currentCharacter;
   })
+  const currentScene = useSelector((state) => {
+    return state.currentSceneHistorySlice.currentScene;
+  })
+
+  console.log(currentScene)
 
   const data = {
     timer: '07:36',
-    currentScene: {
-      url: '/assets/img/backgrounds/cabaret.png',
-      title: 'Cabaret',
-      leftScene: {
-        title: 'street'
-      },
-      rightScene: {
-        title: 'slum'
-      }
-    }
   }
 
 
   return (
     <Container.Column justifyContent="space-between" height="100vh">
-      <Header title={data.currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
+      <Header title={currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
       <CharacterSpeech character={currentCharacter} />
       <PromptInput />
-      <Visual.Background url={data.currentScene.url} />
+      <Visual.Background url={currentScene.url} />
     </Container.Column>
   )
 }

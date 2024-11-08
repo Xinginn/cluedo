@@ -10,6 +10,7 @@ const ColumnStyled = styled.div`
   height: ${(props) => props.height ?? 'fit-content'};
   background-color: ${(props) => props.bgColor ?? "transparent"};
   padding: ${(props) => props.padding ?? '0'};
+  position: ${(props) => props.position ?? 'initial'}
 `;
 
 export default ColumnStyled;
