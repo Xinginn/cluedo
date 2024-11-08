@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom";
 import { updateCharacters } from '../store/currentSceneStore'
+import Loading from '../components/molecules/Loading'
 
 
 const Games = () => {
@@ -40,19 +41,22 @@ const Games = () => {
 
   const handleNewPartie = () => {
     dispatch(createNewInvestigation())
-
-
   }
 
   return (
-    <Container.Grid>
-      {games.map((game, index) => (
-        <GameCard game={game} key={index} />
-      ))}
-      <Action.Button onClick={handleNewPartie}>
-        <Text.Label>Nouvelle partie</Text.Label>
-      </Action.Button>
-    </Container.Grid>
+    <Container.Column width={'100%'}>
+      {status === 'loading' ?
+        <Loading></Loading>
+        : null}
+      <Container.Grid>
+        {games.map((game, index) => (
+          <GameCard game={game} key={index} />
+        ))}
+        <Action.Button onClick={handleNewPartie}>
+          <Text.Label>Nouvelle partie</Text.Label>
+        </Action.Button>
+      </Container.Grid>
+    </Container.Column>
   )
 }
 
