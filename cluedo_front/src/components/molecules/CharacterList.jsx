@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Container, Action, Visual, Text } from '../atoms'
+import { AlternativeThemeProviderContext } from '../../provider/AlternativeThemeProvider'
 
 const CharacterList = ({ characters, onClick, accuse }) => {
+
+  const { isAlternative } = useContext(AlternativeThemeProviderContext)
 
   return (
     <Container.Column>
@@ -9,7 +12,7 @@ const CharacterList = ({ characters, onClick, accuse }) => {
         <Action.Link key={index} to={!accuse ? `${character.id}` : null} onClick={() => { if (!accuse) onClick(character) }}>
           <Action.Button width="100%">
             <Container.Row justifyContent={'flex-start'} gap={'5%'}>
-              <Visual.Image src={`/assets/img/faces/${character.gender}/${character.face}`} width={'8rem'} />
+              <Visual.Image src={`/assets/img/${isAlternative ? 'alternative' : 'classique'}/faces/${character.gender}/${character.face}`} width={'8rem'} />
               {
                 accuse ?
                   <Text.Paragraph>

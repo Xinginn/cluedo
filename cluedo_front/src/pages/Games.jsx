@@ -4,10 +4,9 @@ import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom";
-import { updateCharacters } from '../store/currentSceneStore'
+import { updateCurrentScene } from '../store/currentSceneStore'
 import Loader from '../components/molecules/Loader'
-import { Header } from '../components/molecules'
-import { AlternativeThemeProvider, AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
+import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 
 const Games = () => {
@@ -16,12 +15,12 @@ const Games = () => {
   const status = useSelector((state) => state.investigationHistorySlice.status)
   const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
   const dispatch = useDispatch()
-  const { toggleTheme } = useContext(AlternativeThemeProviderContext)
+  const { isAlternative, toggleTheme } = useContext(AlternativeThemeProviderContext)
 
   useEffect(() => {
     if (status === 'success') {
       const scene = 1
-      dispatch(updateCharacters({ characters, scene }))
+      dispatch(updateCurrentScene({ characters, scene }))
       navigate('/scene')
     }
   }, [status])
@@ -60,6 +59,9 @@ const Games = () => {
           <Text.Label>Nouvelle partie</Text.Label>
         </Action.Button>
       </Container.Grid>
+      {
+        isAlternative ? <Container.SecondaryTheme>Theme alternatif</Container.SecondaryTheme> : <Container.PrimaryTheme>Theme classique</Container.PrimaryTheme>
+      }
     </Container.Column>
   )
 }

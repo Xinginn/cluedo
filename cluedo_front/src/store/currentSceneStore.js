@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { scenes } from '../data/Scenes'
+import { classiqueScenes, alternativeScenes } from '../data/Scenes'
 import { getRandomElements } from '../components/scripts/getRandomElements'
 import { roll } from '../components/scripts/roll'
 
 export const currentSceneHistorySlice = createSlice({
   name: 'currentSceneHistory',
   initialState: {
-    currentScene: scenes[1],
+    currentScene: classiqueScenes[1],
     characters: [
       {
         id: 1,
@@ -24,9 +24,6 @@ export const currentSceneHistorySlice = createSlice({
   },
   reducers: {
     updateCurrentScene: (state, action) => {
-      state.currentScene = scenes.filter((scene) => scene.id === action.payload)[0]
-    },
-    updateCharacters: (state, action) => {
       const characters = action.payload.characters
       const currentSceneCharacterIds = state.characters.reduce((stack, current) => {
         return [...stack, current.id]
@@ -34,7 +31,10 @@ export const currentSceneHistorySlice = createSlice({
       const filteredCharacters = characters.filter((character) => !currentSceneCharacterIds.includes(character.id))
 
       const newScene = action.payload.scene
-      state.currentScene = scenes.filter((scene) => scene.id === newScene)[0]
+      if (action.payload.theme)
+        state.currentScene = alternativeScenes.filter((scene) => scene.id === newScene)[0]
+      if (!action.payload.theme)
+        state.currentScene = classiqueScenes.filter((scene) => scene.id === newScene)[0]
       let nbCharacter = 2
       if (roll(2) > 0)
         nbCharacter = 3
@@ -44,4 +44,4 @@ export const currentSceneHistorySlice = createSlice({
   }
 })
 
-export const { updateCurrentScene, updateCharacters } = currentSceneHistorySlice.actions
+export const { updateCurrentScene } = currentSceneHistorySlice.actions

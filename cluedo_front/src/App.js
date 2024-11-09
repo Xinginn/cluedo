@@ -42,7 +42,7 @@ function App() {
     },
   ])
 
-  const [isAlternative, setIsAlternative] = useState(true)
+  const [isAlternative, setIsAlternative] = useState(false)
   const [theme, setTheme] = useState({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" } })
 
   useEffect(() => {
