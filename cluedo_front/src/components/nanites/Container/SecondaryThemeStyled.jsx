@@ -10,7 +10,7 @@ const SecondaryThemeStyled = styled.div`
   padding: ${(props) => props.padding ?? '0'};
   width: ${(props) => props.width ?? '99vw'};
   height: ${(props) => props.height ?? "fit-content"};
-  background-color: ${(props) => props.theme.bgColor.secondary};
+  background-color: ${(props) => props.theme.bgColor.primary};
 `;
 
 export default SecondaryThemeStyled

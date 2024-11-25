@@ -33,7 +33,7 @@ const Note = () => {
   }
 
   return (
-    <Container.Column>
+    <Container.Column bgColor={'transparent'}>
       <Header title={data.currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
       <Visual.Background url={'/assets/img/backgrounds/notes.jpg'} />

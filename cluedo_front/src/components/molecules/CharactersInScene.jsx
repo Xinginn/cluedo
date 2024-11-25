@@ -4,9 +4,9 @@ import { AlternativeThemeProviderContext } from "../../provider/AlternativeTheme
 
 const CharactersInScene = ({ characters, setCurrentCharacter }) => {
 
-  const { isAlternative } = useContext(AlternativeThemeProviderContext)
+  const { wichTheme } = useContext(AlternativeThemeProviderContext)
   return (
-    <Container.Row height="100px">
+    <Container.Row height="100px" bgColor={'transparent'}>
       {characters.map((character, index) => {
         return (
           <Action.Link
@@ -16,7 +16,7 @@ const CharactersInScene = ({ characters, setCurrentCharacter }) => {
             onClick={() => setCurrentCharacter(character)}
           >
             <Action.Button width="100px">
-              <Visual.Image width='100%' src={`/assets/img/${isAlternative ? 'alternative' : 'classique'}/faces/${character.gender}/${character.face}`}></Visual.Image>
+              <Visual.Image width='100%' src={`/assets/img/${wichTheme.slug}/faces/${character.gender}/${character.face}`}></Visual.Image>
             </Action.Button>
           </Action.Link>
         )

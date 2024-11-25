@@ -10,7 +10,7 @@ const PromptInput = () => {
   }
 
   return (
-    <Container.Row>
+    <Container.Row bgColor={'transparent'}>
       <Form.TextArea onChange={(e) => {
         setPrompt(e.target.value)
       }}></Form.TextArea>

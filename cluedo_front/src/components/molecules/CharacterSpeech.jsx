@@ -4,12 +4,12 @@ import { AlternativeThemeProviderContext } from '../../provider/AlternativeTheme
 
 const CharacterSpeech = ({ character }) => {
 
-  const { isAlternative } = useContext(AlternativeThemeProviderContext)
+  const { wichTheme } = useContext(AlternativeThemeProviderContext)
   const text = "Bonjour, inspecteur. J'aurai adoré répondre à vos questions, mais je trouve que vous êtes moche, donc dommage en fait."
 
   return (
-    <Container.Column>
-      <Visual.Image height="600px" src={`/assets/img/${isAlternative ? 'alternative' : 'classique'}/bodies/${character.gender}/${character.body}`}></Visual.Image>
+    <Container.Column bgColor={'transparent'}>
+      <Visual.Image height="600px" src={`/assets/img/${wichTheme.slug}/bodies/${character.gender}/${character.body}`}></Visual.Image>
       <Container.Row width="400px" bgColor="rgba(200,200,200,0.7)" padding="4px">
         <Text.Paragraph>{text}</Text.Paragraph>
       </Container.Row>

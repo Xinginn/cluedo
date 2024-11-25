@@ -11,9 +11,9 @@ const CharacterDetails = () => {
   })
 
   return (
-    <Container.Column justifyContent="space-between" height="100vh">
+    <Container.Column justifyContent="space-between" height="100vh" bgColor={'transparent'}>
       <Header title="Dossier du suspect" link="/note" icon="go-back"></Header>
-      <Container.Row justifyContent="flex-end">
+      <Container.Row justifyContent="flex-end" bgColor={'transparent'}>
         <Action.Link to={'/result'}>
           <Action.Button width="60px" height="60px">
             <Visual.Icon
@@ -23,7 +23,7 @@ const CharacterDetails = () => {
           </Action.Button>
         </Action.Link>
       </Container.Row>
-      <Container.Row>
+      <Container.Row bgColor={'transparent'}>
         <CharacterInfos character={character} />
       </Container.Row>
       <Visual.Background url="/assets/img/backgrounds/notes.jpg" />
