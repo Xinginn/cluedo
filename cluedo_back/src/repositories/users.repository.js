@@ -36,7 +36,6 @@ export async function createUser(data) {
   return result;
 }
 
-
 export async function deleteUser(id) {
   const result = await prisma.user.delete({
     where: id,

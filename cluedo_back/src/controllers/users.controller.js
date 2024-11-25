@@ -1,4 +1,5 @@
 import { createUser, findUserById, findManyUsers } from "../repositories/users.repository.js";
+import bcrypt from 'bcrypt'
 
 export async function getUsers(req, res) {
   try {
@@ -33,8 +34,10 @@ export async function getUser(req, res) {
 
 export async function postUser(req, res) {
   try {
-    let user = await createUser(req.body);
-    res.status(201).send(user)
+    const { username, password } = req.body
+    const hash = bcrypt.hashSync(password, 10)
+    let user = await createUser({username, password: hash});
+    res.status(201).send()
     return;
   } catch (error) {
     console.log(error)
