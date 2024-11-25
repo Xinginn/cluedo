@@ -38,8 +38,6 @@ export async function postInvestigation(req, res) {
     const investigationString = await queryStructuredInvestigationDetails();
     const investigationData = JSON.parse(investigationString)
 
-    // roll suspects number, from 5 up to 8 
-    //const charactersNumber = Math.ceil(Math.random() * 2) + 2;
     const charactersNumber = 8;
     const charactersString = await queryStructuredSuspects(investigationData.events, charactersNumber);
     const characters = JSON.parse(charactersString).suspects;
