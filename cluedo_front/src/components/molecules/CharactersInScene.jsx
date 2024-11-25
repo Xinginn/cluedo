@@ -5,6 +5,7 @@ import { AlternativeThemeProviderContext } from "../../provider/AlternativeTheme
 const CharactersInScene = ({ characters, setCurrentCharacter }) => {
 
   const { wichTheme } = useContext(AlternativeThemeProviderContext)
+
   return (
     <Container.Row height="100px" bgColor={'transparent'}>
       {characters.map((character, index) => {
