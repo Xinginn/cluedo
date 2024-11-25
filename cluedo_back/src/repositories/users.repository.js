@@ -10,9 +10,9 @@ export async function findManyUsers() {
   return result;
 }
 
-export async function findUserById(id) {
-  const result = await prisma.user.findUnique({
-    where: { id },
+export async function findUserByUsername(username) {
+  const result = await prisma.user.findFirst({
+    where: { username },
     include: {
       investigation: true,
     }

@@ -1,5 +1,6 @@
-import { createUser, findUserById, findManyUsers } from "../repositories/users.repository.js";
+import { createUser, findManyUsers, findUserByUsername } from "../repositories/users.repository.js";
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken"
 
 export async function getUsers(req, res) {
   try {
@@ -13,16 +14,16 @@ export async function getUsers(req, res) {
   }
 }
 
-export async function getUser(req, res) {
+export async function getUserByUsername(req, res) {
   try {
-    const id = parseInt(req.params.id);
-    if (!id) {
-      res.status(401).send("No id was provided");
+    const username = req.params.username;
+    if (!username) {
+      res.status(401).send("No username was provided");
       return
     }
-    const result = await findUserById(id);
+    const result = await findUserByUsername(username);
     if (!result) {
-      res.status(404).send(`No case found with id ${id}`);
+      res.status(404).send(`No case found with username ${username}`);
       return;
     }
     res.status(200).send(result);
@@ -42,5 +43,21 @@ export async function postUser(req, res) {
   } catch (error) {
     console.log(error)
     res.status(500).send(`Server encountered an error: ${error}`);
+  }
+}
+
+export async function connectUser(req, res) {
+  try {
+    const { username, password } = req.body
+    const {password: hash, ...user} = await findUserByUsername(username)
+    const isOk = await bcrypt.compare(password, hash)
+    if(isOk){
+      const token = jwt.sign(user, process.env.JWT_KEY)
+      res.status(200).send(token)
+    }else
+      res.status(404).send(`No account with username: ${username}`)
+  }
+  catch (error){
+    res.status(500).send(`Server encountered an error: ${error}`)
   }
 }
