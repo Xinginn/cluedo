@@ -64,8 +64,8 @@ export const createNewInvestigation = createAsyncThunk(
   'investigationHistory/createNewInvestigation',
   async () => {
     try {
-      const result = await postInvestigation();
-      return result;
+      const result = await postInvestigation()
+      return result
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la creation de l'enquête")
     }

@@ -7,10 +7,10 @@ import { CharacterSpeech, Header, PromptInput } from '../components/molecules'
 const Discussion = () => {
 
   const currentCharacter = useSelector((state) => {
-    return state.currentCharacterHistorySlice.currentCharacter;
+    return state.currentCharacterHistorySlice.currentCharacter
   })
   const currentScene = useSelector((state) => {
-    return state.currentSceneHistorySlice.currentScene;
+    return state.currentSceneHistorySlice.currentScene
   })
 
   console.log(currentScene)

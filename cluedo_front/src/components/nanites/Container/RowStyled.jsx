@@ -13,4 +13,4 @@ const RowStyled = styled.div`
   background-color: ${(props) => props.bgColor ?? "transparent"};
 `;
 
-export default RowStyled;
+export default RowStyled

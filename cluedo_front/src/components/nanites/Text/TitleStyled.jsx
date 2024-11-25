@@ -6,4 +6,4 @@ const TitleStyled = styled.h1`
   font-weight: ${(props) => props.fontWeight ?? "700"};
 `;
 
-export default TitleStyled;
+export default TitleStyled

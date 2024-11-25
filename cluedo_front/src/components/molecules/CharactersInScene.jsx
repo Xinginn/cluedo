@@ -25,4 +25,4 @@ const CharactersInScene = ({ characters, setCurrentCharacter }) => {
   )
 }
 
-export default CharactersInScene;
+export default CharactersInScene

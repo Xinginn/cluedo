@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Text, Visual } from '../atoms'
+import { Container, Visual } from '../atoms'
 
 const Loader = () => {
   return (

@@ -63,7 +63,7 @@ function App() {
         </Provider>
       </AlternativeThemeProvider>
     </ThemeProvider >
-  );
+  )
 }
 
 export default App

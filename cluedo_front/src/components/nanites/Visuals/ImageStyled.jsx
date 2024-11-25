@@ -7,4 +7,4 @@ height: ${(props) => props.height ?? "100%"};
 object-fit: cover;
 `;
 
-export default ImageStyled;
+export default ImageStyled

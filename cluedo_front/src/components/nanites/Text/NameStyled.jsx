@@ -6,4 +6,4 @@ const NameStyled = styled.span`
   font-weight: ${(props) => props.fontWeight ?? "700"};
 `;
 
-export default NameStyled;
+export default NameStyled

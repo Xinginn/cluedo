@@ -7,4 +7,4 @@ const GridStyled = styled.div`
   justify-items: center;
 `;
 
-export default GridStyled;
+export default GridStyled

@@ -8,4 +8,4 @@ const Link = ({ to, ...props }) => {
 }
 
 
-export default Link;
+export default Link

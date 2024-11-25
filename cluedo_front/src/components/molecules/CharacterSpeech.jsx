@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { Container, Text, Visual } from '../atoms';
-import { AlternativeThemeProviderContext } from '../../provider/AlternativeThemeProvider';
+import React, { useContext } from 'react'
+import { Container, Text, Visual } from '../atoms'
+import { AlternativeThemeProviderContext } from '../../provider/AlternativeThemeProvider'
 
-const CharacterSpeech = ({ character, ...props }) => {
+const CharacterSpeech = ({ character }) => {
 
   const { isAlternative } = useContext(AlternativeThemeProviderContext)
   const text = "Bonjour, inspecteur. J'aurai adoré répondre à vos questions, mais je trouve que vous êtes moche, donc dommage en fait."
@@ -17,4 +17,4 @@ const CharacterSpeech = ({ character, ...props }) => {
   )
 }
 
-export default CharacterSpeech;
+export default CharacterSpeech

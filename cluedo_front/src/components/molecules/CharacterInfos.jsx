@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { Container, Text, Visual } from '../atoms';
-import { AlternativeThemeProviderContext } from '../../provider/AlternativeThemeProvider';
+import React, { useContext } from 'react'
+import { Container, Text, Visual } from '../atoms'
+import { AlternativeThemeProviderContext } from '../../provider/AlternativeThemeProvider'
 
 
 const CharacterInfos = ({ character = {} }) => {
@@ -19,4 +19,4 @@ const CharacterInfos = ({ character = {} }) => {
   )
 }
 
-export default CharacterInfos;
+export default CharacterInfos

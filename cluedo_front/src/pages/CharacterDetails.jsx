@@ -31,4 +31,4 @@ const CharacterDetails = () => {
   )
 }
 
-export default CharacterDetails;
+export default CharacterDetails

@@ -3,7 +3,7 @@ import GameCard from '../components/molecules/GameCard'
 import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import { updateCurrentScene } from '../store/currentSceneStore'
 import Loader from '../components/molecules/Loader'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
@@ -11,7 +11,7 @@ import { AlternativeThemeProviderContext } from '../provider/AlternativeThemePro
 
 const Games = () => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const status = useSelector((state) => state.investigationHistorySlice.status)
   const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
   const dispatch = useDispatch()

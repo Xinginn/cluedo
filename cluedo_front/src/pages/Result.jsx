@@ -7,7 +7,7 @@ import { CharacterList } from '../components/molecules'
 const Result = () => {
 
     const currentCharacter = useSelector((state) => {
-        return state.currentCharacterHistorySlice.currentCharacter.character;
+        return state.currentCharacterHistorySlice.currentCharacter.character
     })
     const investigation = useSelector((state) => {
         return state.investigationHistorySlice.investigation
