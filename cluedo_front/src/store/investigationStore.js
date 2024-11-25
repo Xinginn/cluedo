@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getInvestigations, postInvestigation } from '../services/Investigations'
+import { postDiscussionPrompt } from '../services/PromptGPT'
 
 export const investigationHistorySlice = createSlice({
   name: 'investigationHistory',
@@ -22,7 +23,8 @@ export const investigationHistorySlice = createSlice({
           isKiller: true,
           name: 'Edward Harrington',
           role: 'Cousin',
-          gender: 'male'
+          gender: 'male',
+          discussions: [],
         },
         {
           id: 2,
@@ -33,14 +35,23 @@ export const investigationHistorySlice = createSlice({
           isKiller: false,
           name: 'Edward Harrington',
           role: 'Cousin',
-          gender: 'female'
+          gender: 'female',
+          discussions: [],
         }
       ]
     },
     status: 'idle',
     errors: null
   },
-  reducers: {},
+  reducers: {
+    addCharacterDiscussion: (state, action) => {
+      const { characterId, discussion } = action.payload
+      const character = state.investigation.characters.find(item => item.id === characterId)
+      if (character) {
+        character.discussions.push(discussion)
+      }
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(createNewInvestigation.pending, (state) => {
@@ -57,6 +68,25 @@ export const investigationHistorySlice = createSlice({
         state.errors = action.payload
         console.error('Creating investigation failed:', action.payload)
       })
+
+      .addCase(queryAnswer.pending, (state) => {
+        state.status = "loading"
+        console.log('Querying prompt reponse: loading')
+      })
+      .addCase(queryAnswer.fulfilled, (state, action) => {
+        const character = state.investigation.characters.find(item => item.id === action.payload.characterId)
+        // replace character's last discussion entry (which only contained prompt) with full result
+        character.discussions[character.discussions.length - 1] = action.payload
+        console.log([...character.discussions])
+        state.status = "success"
+        console.log('Querying prompt reponse: success')
+      })
+      .addCase(queryAnswer.rejected, (state, action) => {
+        state.status = "failed"
+        state.errors = action.payload
+        console.error('Querying prompt reponse failed:', action.payload)
+      })
+
   }
 })
 
@@ -83,3 +113,17 @@ export const fetchCharacters = createAsyncThunk(
     }
   }
 )
+
+export const queryAnswer = createAsyncThunk(
+  'investigationHistory/queryAnswer',
+  async (payload) => {
+    try {
+      const result = await postDiscussionPrompt(payload.characterId, payload.prompt)
+      return result
+    } catch (error) {
+      throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la recuperation de réponse")
+    }
+  }
+)
+
+export const { addCharacterDiscussion } = investigationHistorySlice.actions

@@ -10,8 +10,8 @@ export async function postDiscussion(req, res) {
     const { investigation, discussions, ...characterData } = await findCharacterById(characterId);
 
     const answer = await queryCharacterAnswer(investigation, discussions, characterData, prompt);
-    await createDiscussion({ prompt, answer, characterId })
-    res.status(200).send(answer)
+    const discussionLine = await createDiscussion({ prompt, answer, characterId })
+    res.status(200).send(discussionLine)
 
     return;
   } catch (error) {

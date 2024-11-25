@@ -18,7 +18,8 @@ export const currentSceneHistorySlice = createSlice({
         isKiller: false,
         name: 'Jessica Harrington',
         role: 'Cousin',
-        gender: 'female'
+        gender: 'female',
+        discussions: [],
       }
     ]
   },

@@ -23,7 +23,7 @@ export async function queryStructuredInvestigationDetails() {
     },
     {
       role: "user",
-      content: "L'intrigue se passe en 1920 à Chicago, ambiance film noir. La victime a été tuée par un de ses proches. Imagine les evenements et l'autopsie."
+      content: "L'intrigue se passe en 1920, ambiance film noir. La victime a été tuée par un de ses proches. Imagine les evenements et l'autopsie."
     }
   ];
 
@@ -55,7 +55,7 @@ export async function queryStructuredInvestigationDetails() {
 
     }
   }
-  const result = await promptGPT(messages, response_format)
+  const result = await promptGPT(messages, response_format, 0.7)
 
   return result;
 }
@@ -64,7 +64,7 @@ export async function queryStructuredSuspects(events, suspectsNumber = 4, wordCo
   const messages = [
     {
       role: "system",
-      content: `Tu es un l'assistant d'un écrivain qui écrit un roman policier se déroulant dans les années 1920. Tu dois générer une liste de suspects à partir de la description du crime, en respectant le schéma. Pour chaque suspect, tu dois inventer un nom et prénom (name), définir son genre 'male' ou 'female' (gender), son role dans l'affaire (role) par exemple 'Oncle de la vicitime' ou 'Serveuse au bar', sa personalité (personality) en trois adjectifs, son historique relatif au moment du crime avec ses préocupations et secrets (description) en ${wordCount} mots maximum, et si il ou elle a tué la vicitime ou non (isKiller). Il doit obligatoirement y avoir un seul tueur ou tueuse (mais il peut y avoir un complice, eventuellement). Ne décris pas la victime, seulement les suspects. Ne génére par d'enquêteur, d'inspecteur ou de membre des forces de police come role.`
+      content: `Tu es un l'assistant d'un écrivain qui écrit un roman policier se déroulant dans les années 1920. Tu dois générer une liste de suspects à partir de la description du crime, en respectant le schéma. Pour chaque suspect, tu dois inventer un nom et prénom (name), définir son genre 'male' ou 'female' (gender), son role dans l'affaire (role) par exemple 'Oncle de la vicitime' ou 'Serveuse au bar', sa personalité (personality) en trois adjectifs, son historique relatif au moment du crime avec ses préocupations et secrets (description) en ${wordCount} mots maximum, et si il ou elle a tué la vicitime ou non (isKiller). Il doit obligatoirement y avoir un seul tueur ou tueuse (mais il peut y avoir un complice, eventuellement). Ne décris pas la victime, seulement les suspects. Ne génére par d'enquêteur, d'inspecteur ou de membre des forces de police comme role.`
     },
     {
       role: "user",
@@ -144,7 +144,7 @@ export async function queryCharacterAnswer(investigation, discussions, character
   const messages = [
     {
       role: "system",
-      content: `Tu es un suspect dans une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Les autres protagonistes sont: '${otherCharactersString}'. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes. Uniquement si tu n'est pas coupable, tu as 20% de chances de parler de lui si c'est pertinent, et 20% de chances de donner une fausse piste sur un autre personnage. Sinon, parle de quelqu'un d'autre.`
+      content: `Tu es l'un des suspect dans une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Les autres protagonistes sont: '${otherCharactersString}'. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes. Si tu es innocent, tu as 20% de chances de parler de lui si c'est pertinent, et 20% de chances de donner une fausse piste sur un autre personnage. Sinon, parle de quelqu'un d'autre. Si la question n'a pas de sens, répond simplement que tu n'as pas compris. Si la question ne semble pas porter sur l'enquête, tu n'as pas besoin de parler de l'enquete, répond naturellement.`
     },
     {
       role: "user",
