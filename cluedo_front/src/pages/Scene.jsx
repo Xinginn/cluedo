@@ -5,7 +5,7 @@ import { updateCurrentCharacter } from '../store/currentCharacterStore'
 import { Header, MovementIcons, CharactersInScene } from '../components/molecules'
 import { Container } from '../components/atoms'
 import { Visual } from '../components/atoms'
-import { updateCharacters, updateCurrentScene } from '../store/currentSceneStore'
+import { updateCurrentScene } from '../store/currentSceneStore'
 
 const Scene = () => {
 
@@ -21,7 +21,7 @@ const Scene = () => {
   })
 
   const handleSceneChange = (scene) => {
-    dispatch(updateCharacters({ characters, scene }))
+    dispatch(updateCurrentScene({ characters, scene }))
   }
 
   const dispatch = useDispatch()
@@ -29,6 +29,8 @@ const Scene = () => {
   const setCurrentCharacter = (character) => {
     dispatch(updateCurrentCharacter(character))
   }
+
+  console.log(currentScene)
 
   const timer = '07:29'
 

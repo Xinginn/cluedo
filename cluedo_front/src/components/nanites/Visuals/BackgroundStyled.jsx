@@ -12,4 +12,4 @@ background-position: center;
 z-index: -1;
 `;
 
-export default BackgroundStyled;
+export default BackgroundStyled

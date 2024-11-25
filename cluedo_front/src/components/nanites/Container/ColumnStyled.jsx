@@ -13,4 +13,4 @@ const ColumnStyled = styled.div`
   position: ${(props) => props.position ?? 'initial'}
 `;
 
-export default ColumnStyled;
+export default ColumnStyled

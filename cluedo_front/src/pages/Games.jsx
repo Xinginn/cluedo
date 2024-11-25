@@ -1,24 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import GameCard from '../components/molecules/GameCard'
 import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
-import { useNavigate } from "react-router-dom";
-import { updateCharacters } from '../store/currentSceneStore'
+import { useNavigate } from "react-router-dom"
+import { updateCurrentScene } from '../store/currentSceneStore'
 import Loader from '../components/molecules/Loader'
+import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 
 const Games = () => {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const status = useSelector((state) => state.investigationHistorySlice.status)
   const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
   const dispatch = useDispatch()
+  const { isAlternative, toggleTheme } = useContext(AlternativeThemeProviderContext)
 
   useEffect(() => {
     if (status === 'success') {
       const scene = 1
-      dispatch(updateCharacters({ characters, scene }))
+      dispatch(updateCurrentScene({ characters, scene }))
       navigate('/scene')
     }
   }, [status])
@@ -48,6 +50,7 @@ const Games = () => {
       {status === 'loading' ?
         <Loader></Loader>
         : null}
+      <Action.Button onClick={toggleTheme}>Changer de theme</Action.Button>
       <Container.Grid>
         {games.map((game, index) => (
           <GameCard game={game} key={index} />
@@ -56,6 +59,9 @@ const Games = () => {
           <Text.Label>Nouvelle partie</Text.Label>
         </Action.Button>
       </Container.Grid>
+      {
+        isAlternative ? <Container.SecondaryTheme>Theme alternatif</Container.SecondaryTheme> : <Container.PrimaryTheme>Theme classique</Container.PrimaryTheme>
+      }
     </Container.Column>
   )
 }

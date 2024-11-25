@@ -7,4 +7,4 @@ const ParagraphStyled = styled.p`
   text-align: ${(props) => props.textAlign ?? "start"};
 `;
 
-export default ParagraphStyled;
+export default ParagraphStyled

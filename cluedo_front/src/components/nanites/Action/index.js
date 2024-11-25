@@ -1,3 +1,3 @@
 import ButtonStyled from "./ButtonStyled"
 
-export { ButtonStyled };
+export { ButtonStyled }

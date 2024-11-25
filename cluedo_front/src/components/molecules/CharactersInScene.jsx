@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Action, Container, Visual } from '../atoms'
+import { AlternativeThemeProviderContext } from "../../provider/AlternativeThemeProvider"
 
 const CharactersInScene = ({ characters, setCurrentCharacter }) => {
 
+  const { isAlternative } = useContext(AlternativeThemeProviderContext)
   return (
     <Container.Row height="100px">
       {characters.map((character, index) => {
@@ -14,7 +16,7 @@ const CharactersInScene = ({ characters, setCurrentCharacter }) => {
             onClick={() => setCurrentCharacter(character)}
           >
             <Action.Button width="100px">
-              <Visual.Image width='100%' src={`/assets/img/faces/${character.gender}/${character.face}`}></Visual.Image>
+              <Visual.Image width='100%' src={`/assets/img/${isAlternative ? 'alternative' : 'classique'}/faces/${character.gender}/${character.face}`}></Visual.Image>
             </Action.Button>
           </Action.Link>
         )
@@ -23,4 +25,4 @@ const CharactersInScene = ({ characters, setCurrentCharacter }) => {
   )
 }
 
-export default CharactersInScene;
+export default CharactersInScene
