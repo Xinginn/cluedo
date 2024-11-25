@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Container, Visual, Text } from '../components/atoms'
+import { Container, Visual, Text, Action } from '../components/atoms'
 import { CharacterList } from '../components/molecules'
+import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 const Result = () => {
+
+    const { wichTheme } = useContext(AlternativeThemeProviderContext)
 
     const currentCharacter = useSelector((state) => {
         return state.currentCharacterHistorySlice.currentCharacter.character
@@ -15,12 +18,15 @@ const Result = () => {
 
     return (
         <Container.Column width={'100%'} bgColor={'transparent'}>
-            <Visual.Background url={'/assets/img/backgrounds/courtroom.jpg'}></Visual.Background>
-            <Container.Column bgColor={'#fcdd62'} width={'100%'}>
+            <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/courtroom.jpg`}></Visual.Background>
+            <Container.Row width={'100%'} position={'relative'}>
                 <Text.Title>
                     {currentCharacter.isKiller ? 'Bravo' : 'Perdu'}
                 </Text.Title>
-            </Container.Column>
+                <Container.Column position={'absolute'} right={'5vw'}>
+                    <Action.Link to={'/'}>Accueil</Action.Link>
+                </Container.Column>
+            </Container.Row>
             <Container.Column bgColor={'#dddddda3'}>
                 <Text.Paragraph>
                     {investigation.events}
