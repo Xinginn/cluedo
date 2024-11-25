@@ -6,15 +6,17 @@ import { Header, MovementIcons, CharactersInScene } from '../components/molecule
 import { Container } from '../components/atoms'
 import { Visual } from '../components/atoms'
 import { updateCurrentScene } from '../store/currentSceneStore'
+import SummaryModal from '../components/molecules/SummaryModal'
 
 const Scene = () => {
 
+  const [summaryDisplay, setSummaryDisplay] = useState(true)
 
   const currentSceneCharacters = useSelector((state) => {
     return state.currentSceneHistorySlice.characters
   })
-  const characters = useSelector((state) => {
-    return state.investigationHistorySlice.investigation.characters
+  const investigation = useSelector((state) => {
+    return state.investigationHistorySlice.investigation
   })
   const currentScene = useSelector((state) => {
     return state.currentSceneHistorySlice.currentScene
@@ -23,6 +25,7 @@ const Scene = () => {
   const dispatch = useDispatch()
 
   const handleSceneChange = (scene) => {
+    const characters = investigation.characters
     dispatch(updateCurrentScene({ characters, scene }))
   }
 
@@ -30,10 +33,17 @@ const Scene = () => {
     dispatch(updateCurrentCharacter(character))
   }
 
+  const displaySummary = () => {
+    setSummaryDisplay(!summaryDisplay)
+  }
+
   const timer = '07:29'
 
   return (
     <Container.Column width={'100%'} bgColor={'transparent'}>
+      {summaryDisplay &&
+        <SummaryModal displaySummary={displaySummary}>{investigation.autopsy}</SummaryModal>
+      }
       <Header title={currentScene.title} timer={timer} link={'/note'} icon={'book'} />
       <MovementIcons currentScene={currentScene} setCurrentScene={handleSceneChange} />
       <CharactersInScene characters={currentSceneCharacters} setCurrentCharacter={setCurrentCharacter} />

@@ -48,7 +48,7 @@ const Games = () => {
   return (
     <Container.Column width={'100%'}>
       {status === 'loading' ?
-        <Loader></Loader>
+        <Loader text={'Création de la partie. Cela peut prendre quelques instants...'}></Loader>
         : null}
       <Action.Button onClick={toggleTheme}>Changer de theme</Action.Button>
       <Container.Grid>

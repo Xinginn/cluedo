@@ -52,7 +52,7 @@ function App() {
     if (wichTheme.isAlternative)
       setTheme({ bgColor: { primary: '#5cbbf2', secondary: '#5c9ded' }, slug: 'alternative' })
     else setTheme({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" }, slug: 'classique' })
-  }, [wichTheme])
+  }, [wichTheme.isAlternative])
 
   const changeAlternativeTheme = () => {
     if (wichTheme.isAlternative)
