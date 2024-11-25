@@ -4,15 +4,15 @@ import { AlternativeThemeProviderContext } from '../../provider/AlternativeTheme
 
 const CharacterList = ({ characters, onClick, accuse }) => {
 
-  const { isAlternative } = useContext(AlternativeThemeProviderContext)
+  const { wichTheme } = useContext(AlternativeThemeProviderContext)
 
   return (
-    <Container.Column>
+    <Container.Column bgColor={'transparent'}>
       {characters.map((character, index) => (
         <Action.Link key={index} to={!accuse ? `${character.id}` : null} onClick={() => { if (!accuse) onClick(character) }}>
           <Action.Button width="100%">
-            <Container.Row justifyContent={'flex-start'} gap={'5%'}>
-              <Visual.Image src={`/assets/img/${isAlternative ? 'alternative' : 'classique'}/faces/${character.gender}/${character.face}`} width={'8rem'} />
+            <Container.Row justifyContent={'flex-start'} gap={'5%'} bgColor={'transparent'}>
+              <Visual.Image src={`/assets/img/${wichTheme.slug}/faces/${character.gender}/${character.face}`} width={'8rem'} />
               {
                 accuse ?
                   <Text.Paragraph>

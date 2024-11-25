@@ -42,22 +42,34 @@ function App() {
     },
   ])
 
-  const [isAlternative, setIsAlternative] = useState(false)
-  const [theme, setTheme] = useState({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" } })
+  const [wichTheme, setWichTheme] = useState({
+    isAlternative: false,
+    slug: 'classique'
+  })
+  const [theme, setTheme] = useState({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" }, slug: 'classique' })
 
   useEffect(() => {
-    if (isAlternative)
-      setTheme({ bgColor: { primary: '#5cbbf2', secondary: '#5c9ded' } })
-    else setTheme({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" } })
-  }, [isAlternative])
+    if (wichTheme.isAlternative)
+      setTheme({ bgColor: { primary: '#5cbbf2', secondary: '#5c9ded' }, slug: 'alternative' })
+    else setTheme({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" }, slug: 'classique' })
+  }, [wichTheme])
 
   const changeAlternativeTheme = () => {
-    setIsAlternative(!isAlternative)
+    if (wichTheme.isAlternative)
+      setWichTheme({
+        isAlternative: false,
+        slug: 'classique'
+      })
+    else
+      setWichTheme({
+        isAlternative: true,
+        slug: 'alternative'
+      })
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, isAlternative: isAlternative }}>
+      <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
         <Provider store={store}>
           <RouterProvider router={router} />
         </Provider>

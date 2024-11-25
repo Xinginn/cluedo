@@ -8,7 +8,7 @@ const ColumnStyled = styled.div`
   gap: ${(props) => props.gap ?? "8px"};
   width: ${(props) => props.width ?? 'fit-content'};
   height: ${(props) => props.height ?? 'fit-content'};
-  background-color: ${(props) => props.bgColor ?? "transparent"};
+  background-color: ${(props) => props.bgColor ? props.bgColor : props.theme.bgColor.primary ?? props.theme.bgColor.primary};
   padding: ${(props) => props.padding ?? '0'};
   position: ${(props) => props.position ?? 'initial'}
 `;

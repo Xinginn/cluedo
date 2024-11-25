@@ -13,15 +13,13 @@ const Discussion = () => {
     return state.currentSceneHistorySlice.currentScene
   })
 
-  console.log(currentScene)
-
   const data = {
     timer: '07:36',
   }
 
 
   return (
-    <Container.Column justifyContent="space-between" height="100vh">
+    <Container.Column justifyContent="space-between" height="100vh" bgColor={'transparent'}>
       <Header title={currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
       <CharacterSpeech character={currentCharacter} />
       <PromptInput />

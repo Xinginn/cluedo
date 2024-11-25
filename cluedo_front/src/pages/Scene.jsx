@@ -20,22 +20,20 @@ const Scene = () => {
     return state.currentSceneHistorySlice.currentScene
   })
 
+  const dispatch = useDispatch()
+
   const handleSceneChange = (scene) => {
     dispatch(updateCurrentScene({ characters, scene }))
   }
-
-  const dispatch = useDispatch()
 
   const setCurrentCharacter = (character) => {
     dispatch(updateCurrentCharacter(character))
   }
 
-  console.log(currentScene)
-
   const timer = '07:29'
 
   return (
-    <Container.Column width={'100%'}>
+    <Container.Column width={'100%'} bgColor={'transparent'}>
       <Header title={currentScene.title} timer={timer} link={'/note'} icon={'book'} />
       <MovementIcons currentScene={currentScene} setCurrentScene={handleSceneChange} />
       <CharactersInScene characters={currentSceneCharacters} setCurrentCharacter={setCurrentCharacter} />

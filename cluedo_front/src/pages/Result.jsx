@@ -14,7 +14,7 @@ const Result = () => {
     })
 
     return (
-        <Container.Column width={'100%'}>
+        <Container.Column width={'100%'} bgColor={'transparent'}>
             <Visual.Background url={'/assets/img/backgrounds/courtroom.jpg'}></Visual.Background>
             <Container.Column bgColor={'#fcdd62'} width={'100%'}>
                 <Text.Title>
@@ -26,7 +26,7 @@ const Result = () => {
                     {investigation.events}
                 </Text.Paragraph>
             </Container.Column>
-            <Container.Column>
+            <Container.Column bgColor={'transparent'}>
                 <CharacterList characters={investigation.characters} accuse={true} />
             </Container.Column>
         </Container.Column>

@@ -15,7 +15,7 @@ const Games = () => {
   const status = useSelector((state) => state.investigationHistorySlice.status)
   const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
   const dispatch = useDispatch()
-  const { isAlternative, toggleTheme } = useContext(AlternativeThemeProviderContext)
+  const { wichTheme, toggleTheme } = useContext(AlternativeThemeProviderContext)
 
   useEffect(() => {
     if (status === 'success') {
@@ -60,7 +60,7 @@ const Games = () => {
         </Action.Button>
       </Container.Grid>
       {
-        isAlternative ? <Container.SecondaryTheme>Theme alternatif</Container.SecondaryTheme> : <Container.PrimaryTheme>Theme classique</Container.PrimaryTheme>
+        wichTheme.slug ? 'Theme alternatif' : 'Theme classique'
       }
     </Container.Column>
   )

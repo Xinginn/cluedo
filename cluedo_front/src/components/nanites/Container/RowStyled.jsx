@@ -10,7 +10,7 @@ const RowStyled = styled.div`
   padding: ${(props) => props.padding ?? '0'};
   width: ${(props) => props.width ?? '99vw'};
   height: ${(props) => props.height ?? "fit-content"};
-  background-color: ${(props) => props.bgColor ?? "transparent"};
+  background-color: ${(props) => props.bgColor ? props.bgColor : props.theme.bgColor.primary ?? props.theme.bgColor.primary};
 `;
 
 export default RowStyled
