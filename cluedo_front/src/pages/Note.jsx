@@ -36,7 +36,7 @@ const Note = () => {
 
   return (
     <Container.Column bgColor={'transparent'}>
-      <Header title={data.currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
+      <Header title="Notes" timer={data.timer} link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
       <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>

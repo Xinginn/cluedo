@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useEffect, forwardRef } from 'react'
 import { Container, Text, Visual } from '../atoms'
 import { AlternativeThemeProviderContext } from '../../provider/AlternativeThemeProvider'
 import { useSelector } from 'react-redux'
+import { ScrollTarget } from '../atoms/Container'
 
 const CharacterSpeech = ({ character }) => {
 
@@ -13,6 +14,16 @@ const CharacterSpeech = ({ character }) => {
   })
 
   const { wichTheme } = useContext(AlternativeThemeProviderContext)
+
+  const discussionEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    discussionEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [discussions]);
 
   return (
     <Container.Row bgColor={'transparent'}>
@@ -28,6 +39,7 @@ const CharacterSpeech = ({ character }) => {
             )
           })
         }
+        <ScrollTarget ref={discussionEndRef}></ScrollTarget>
       </Container.Column>
     </Container.Row >
   )
