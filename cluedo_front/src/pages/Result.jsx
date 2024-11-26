@@ -24,7 +24,7 @@ const Result = () => {
                     {currentCharacter.isKiller ? 'Bravo' : 'Perdu'}
                 </Text.Title>
                 <Container.Column position={'absolute'} right={'5vw'}>
-                    <Action.Link to={'/'}>Accueil</Action.Link>
+                    <Action.Link to={'/games'}>Accueil</Action.Link>
                 </Container.Column>
             </Container.Row>
             <Container.Column bgColor={'#dddddda3'}>
