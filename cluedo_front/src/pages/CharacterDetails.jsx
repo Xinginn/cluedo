@@ -26,7 +26,7 @@ const CharacterDetails = () => {
       <Container.Row bgColor={'transparent'}>
         <CharacterInfos character={character} />
       </Container.Row>
-      <Visual.Background url="/assets/img/backgrounds/notes.jpg" />
+      <Visual.Background url="/assets/img/backgrounds/notes.webp" />
     </Container.Column>
   )
 }

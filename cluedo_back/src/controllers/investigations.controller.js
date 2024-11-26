@@ -36,12 +36,37 @@ export async function getInvestigation(req, res) {
 export async function postInvestigation(req, res) {
   try {
     const investigationString = await queryStructuredInvestigationDetails();
-    const investigationData = JSON.parse(investigationString)
+    const investigationData = JSON.parse(investigationString);
 
     const charactersNumber = 8;
     const charactersString = await queryStructuredSuspects(investigationData.events, charactersNumber);
     const characters = JSON.parse(charactersString).suspects;
 
+    // randomly assign character visuals
+    // populate arrays
+    const spriteNumbers = 8;
+    var availableSprites = { male: [], female: [] };
+    for (let i = 1; i <= spriteNumbers; i++) {
+      availableSprites.male.push(i);
+      availableSprites.female.push(i);
+    }
+
+    // pick and assign sprites
+    for (let character of characters) {
+      const sourceArray = availableSprites[character.gender];
+      if (sourceArray.length > 0) {
+        const randomIndex = Math.floor(Math.random() * sourceArray.length);
+        const randomSpriteNumber = sourceArray[randomIndex];
+        sourceArray.splice(randomIndex, 1)
+        character.face = `face_${randomSpriteNumber}.webp`;
+        character.body = `body_${randomSpriteNumber}.webp`;
+      } else {
+        character.face = "default.webp";
+        character.body = "default.webp";
+      }
+    }
+
+    // create invesigation in DB
     let investigation = await createInvestigation({ ...investigationData, characters });
     res.status(201).send(investigation)
     return;

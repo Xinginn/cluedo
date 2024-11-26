@@ -21,7 +21,7 @@ const Note = () => {
   const data = {
     timer: '07:29',
     currentScene: {
-      url: '/assets/img/backgrounds/cabaret.png',
+      url: '/assets/img/backgrounds/cabaret.webp',
       title: 'Cabaret',
       leftScene: {
         title: 'street'
@@ -36,7 +36,7 @@ const Note = () => {
     <Container.Column bgColor={'transparent'}>
       <Header title={data.currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
-      <Visual.Background url={'/assets/img/backgrounds/notes.jpg'} />
+      <Visual.Background url={'/assets/img/backgrounds/notes.webp'} />
     </Container.Column>
   )
 }
