@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateCurrentCharacter } from '../store/currentCharacterStore'
 
-
 import { Header, CharacterList } from '../components/molecules'
 import { Container, Visual } from '../components/atoms'
+import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 const Note = () => {
 
@@ -17,6 +17,8 @@ const Note = () => {
   const setCurrentCharacter = (character) => {
     dispatch(updateCurrentCharacter({ character }))
   }
+
+  const { wichTheme } = useContext(AlternativeThemeProviderContext)
 
   const data = {
     timer: '07:29',
@@ -36,7 +38,7 @@ const Note = () => {
     <Container.Column bgColor={'transparent'}>
       <Header title={data.currentScene.title} timer={data.timer} link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
-      <Visual.Background url={'/assets/img/backgrounds/notes.webp'} />
+      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>
   )
 }

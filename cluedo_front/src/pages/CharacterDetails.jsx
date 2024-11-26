@@ -1,14 +1,17 @@
-import React from "react"
+import React, { useContext } from 'react'
 import { useSelector } from "react-redux"
 
 import { CharacterInfos, Header } from "../components/molecules"
 import { Action, Container, Visual } from "../components/atoms"
+import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 const CharacterDetails = () => {
 
   const character = useSelector((state) => {
     return state.currentCharacterHistorySlice.currentCharacter.character
   })
+
+  const { wichTheme } = useContext(AlternativeThemeProviderContext)
 
   return (
     <Container.Column justifyContent="space-between" height="100vh" bgColor={'transparent'}>
@@ -26,7 +29,7 @@ const CharacterDetails = () => {
       <Container.Row bgColor={'transparent'}>
         <CharacterInfos character={character} />
       </Container.Row>
-      <Visual.Background url="/assets/img/backgrounds/notes.webp" />
+      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>
   )
 }
