@@ -8,6 +8,7 @@ const ColumnStyled = styled.div`
   gap: ${(props) => props.gap ?? "8px"};
   width: ${(props) => props.width ?? 'fit-content'};
   height: ${(props) => props.height ?? 'fit-content'};
+  max-height: ${(props) => props.maxHeight ?? ''};
   background-color: ${(props) => props.bgColor ? props.bgColor : props.theme.bgColor.primary ?? props.theme.bgColor.primary};
   padding: ${(props) => props.padding ?? '0'};
   position: ${(props) => props.position ?? 'initial'};
@@ -15,6 +16,7 @@ const ColumnStyled = styled.div`
   bottom: ${(props) => props.bottom ?? ''};
   left: ${(props) => props.left ?? ''};
   right: ${(props) => props.right ?? ''};
+  overflow-y: ${(props) => props.overflowY ?? 'visible'};
 `;
 
 export default ColumnStyled
