@@ -1,6 +1,7 @@
 import { createInvestigation, findInvestigationById, findManyInvestigations } from "../repositories/investigations.repository.js";
 
 import { queryStructuredInvestigationDetails, queryStructuredSuspects } from '../scripts/chatGPT.js';
+import { shuffle } from "../scripts/commons.js";
 
 export async function getInvestigations(req, res) {
   try {
@@ -40,7 +41,8 @@ export async function postInvestigation(req, res) {
 
     const charactersNumber = 8;
     const charactersString = await queryStructuredSuspects(investigationData.events, charactersNumber);
-    const characters = JSON.parse(charactersString).suspects;
+    let characters = JSON.parse(charactersString).suspects;
+    shuffle(characters);
 
     // randomly assign character visuals
     // populate arrays
