@@ -17,6 +17,7 @@ const ColumnStyled = styled.div`
   left: ${(props) => props.left ?? ''};
   right: ${(props) => props.right ?? ''};
   overflow-y: ${(props) => props.overflowY ?? 'visible'};
+  border-radius: ${(props) => props.borderRadius ?? 0};
 `;
 
 export default ColumnStyled
