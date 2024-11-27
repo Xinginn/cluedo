@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Text, Container, Visual, Action } from '../atoms'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { disconnectUser } from '../../store/userStore'
 
 const Header = ({ title = 'Salle actuelle', link = '/', icon }) => {
 
@@ -46,6 +47,11 @@ const Header = ({ title = 'Salle actuelle', link = '/', icon }) => {
           height={'40px'}
         />
       </Action.Button>
+      {!['Notes', 'Dossier du suspect'].includes(title) &&
+        <Container.Column borderRadius={'150px'} width={'15rem'} height={'3rem'} position={'absolute'} top={'100px'} justifyContent={'center'} alignItem={'center'}>
+          <Text.Title fontSize={'30px'}>{title}</Text.Title>
+        </Container.Column>
+      }
     </Container.Row>
   )
 }
