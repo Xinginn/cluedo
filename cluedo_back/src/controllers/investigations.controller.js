@@ -36,7 +36,8 @@ export async function getInvestigation(req, res) {
 export async function postInvestigation(req, res) {
   try {
     const investigationString = await queryStructuredInvestigationDetails();
-    const investigationData = JSON.parse(investigationString)
+    const investigationData = { ...JSON.parse(investigationString), userId: req.user.id }
+
 
     const charactersNumber = 8;
     const charactersString = await queryStructuredSuspects(investigationData.events, charactersNumber);

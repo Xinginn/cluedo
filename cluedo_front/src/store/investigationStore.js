@@ -62,9 +62,9 @@ export const investigationHistorySlice = createSlice({
 
 export const createNewInvestigation = createAsyncThunk(
   'investigationHistory/createNewInvestigation',
-  async () => {
+  async (token) => {
     try {
-      const result = await postInvestigation()
+      const result = await postInvestigation({ token })
       return result
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la creation de l'enquête")

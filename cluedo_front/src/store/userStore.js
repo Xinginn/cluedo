@@ -7,6 +7,7 @@ export const userHistorySlice = createSlice({
   initialState: {
     user: null,
     isConnected: false,
+    token: null,
     status: 'idle',
     errors: null
   },
@@ -23,9 +24,9 @@ export const userHistorySlice = createSlice({
         console.log('Connect user: loading')
       })
       .addCase(connectUser.fulfilled, (state, action) => {
-        state.user = action.payload
+        state.user = action.payload.user
+        state.token = action.payload.token
         state.isConnected = true
-        console.log(state.isConnected)
         state.status = "success"
         console.log('Connected user: success')
       })
@@ -42,7 +43,9 @@ export const connectUser = createAsyncThunk(
   async (payload) => {
     try {
       const result = await connection(payload)
-      return jwtDecode(result)
+      const token = result
+      const user = jwtDecode(result)
+      return { user, token }
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la connection")
     }
