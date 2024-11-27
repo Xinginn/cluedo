@@ -3,7 +3,7 @@ import { prisma } from "./prisma.js";
 export async function findManyUsers() {
   const result = await prisma.user.findMany({
     include: {
-      investigation: true,
+      investigations: true,
     }
   });
 
@@ -14,7 +14,7 @@ export async function findUserByUsername(username) {
   const result = await prisma.user.findFirst({
     where: { username },
     include: {
-      investigation: true,
+      investigations: true,
     }
   });
 
@@ -25,7 +25,7 @@ export async function findUserById(id) {
   const result = await prisma.user.findFirst({
     where: { id },
     include: {
-      investigation: true,
+      investigations: true,
     }
   });
 
@@ -40,7 +40,7 @@ export async function createUser(data) {
       ...userData
     },
     include: {
-      investigation: true,
+      investigations: true,
     }
   });
 

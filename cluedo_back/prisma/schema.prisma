@@ -18,7 +18,7 @@ model User {
   username String @default("1920")
   password String
 
-  investigation Investigation[]
+  investigations Investigation[]
 }
 
 model Investigation {

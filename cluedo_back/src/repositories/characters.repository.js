@@ -11,7 +11,7 @@ export async function findCharacterById(id) {
     where: { id },
     include: {
       discussions: true,
-      investigation: {
+      investigations: {
         include: {
           characters: {
             select: {

@@ -48,7 +48,7 @@ const Games = () => {
         <Text.Label>Nouvelle partie</Text.Label>
       </Action.Button>
       <Container.Column>
-        {user.investigation.map((game, index) => (
+        {user.investigations.map((game, index) => (
           <GameCard onClick={() => handleSetInvestigation(game.id)} game={game} key={index} />
         ))}
       </Container.Column>
