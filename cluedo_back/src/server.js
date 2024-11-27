@@ -16,7 +16,7 @@ function main() {
   discussionsRoute(app);
   userRoute(app);
 
-  const port = process.env.PORT || 5678;
+  const port = process.env.PORT || 8080;
   app.listen(port, () => {
     console.log(`\nServer is runnning on port ${port}`)
   });
