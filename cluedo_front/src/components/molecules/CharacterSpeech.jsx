@@ -34,7 +34,12 @@ const CharacterSpeech = ({ character }) => {
             return (
               <Container.Column key={index} bgColor={'transparent'} padding="4px">
                 <Text.Paragraph width='80%' padding="4px" borderRadius="8px" alignSelf='flex-end' bgColor="rgba(200,200,200,0.8)" >{item.prompt}</Text.Paragraph>
-                <Text.Paragraph width='80%' padding="4px" borderRadius="8px" alignSelf='flex-start' bgColor="rgba(200,200,200,0.8)">{item.answer}</Text.Paragraph>
+
+                {!!item.answer ?
+                  <Text.Paragraph width='80%' padding="4px" borderRadius="8px" alignSelf='flex-start' bgColor="rgba(200,200,200,0.8)">{item.answer}</Text.Paragraph>
+                  :
+                  <Container.Row width="50px" height="12px" alignSelf='flex-start' className='discussion-loader' bgColor={'transparent'}></Container.Row>
+                }
               </Container.Column>
             )
           })

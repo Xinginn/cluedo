@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createNewInvestigation } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom"
 import { updateCurrentScene } from '../store/currentSceneStore'
-import Loader from '../components/molecules/Loader'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
+import { Loader } from '../components/molecules'
 
 
 const Games = () => {

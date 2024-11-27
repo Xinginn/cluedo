@@ -5,5 +5,6 @@ import MovementIcons from "./MovementIcons"
 import CharacterList from './CharacterList'
 import CharacterSpeech from './CharacterSpeech'
 import CharacterInfos from './CharacterInfos'
+import Loader from './Loader'
 
-export { Header, CharactersInScene, PromptInput, MovementIcons, CharacterList, CharacterSpeech, CharacterInfos }
+export { Header, CharactersInScene, PromptInput, MovementIcons, CharacterList, CharacterSpeech, CharacterInfos, Loader }

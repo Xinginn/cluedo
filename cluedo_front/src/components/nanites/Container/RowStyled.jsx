@@ -16,6 +16,7 @@ const RowStyled = styled.div`
   bottom: ${(props) => props.bottom ?? ''};
   left: ${(props) => props.left ?? ''};
   right: ${(props) => props.right ?? ''};
+  align-self: ${(props) => props.alignSelf ?? ""};
 `;
 
 export default RowStyled
