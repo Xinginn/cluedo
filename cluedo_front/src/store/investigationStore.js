@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getInvestigations, postInvestigation } from '../services/Investigations'
+import { getInvestigations, getInvestigationsById, postInvestigation } from '../services/Investigations'
 import { postDiscussionPrompt } from '../services/PromptGPT'
 
 export const investigationHistorySlice = createSlice({
@@ -73,6 +73,22 @@ export const investigationHistorySlice = createSlice({
         console.error('Creating investigation failed:', action.payload)
       })
 
+      .addCase(fetchInvestigationById.pending, (state) => {
+        state.status = "loading"
+        console.log('fetch investigation by id reponse: loading')
+      })
+      .addCase(fetchInvestigationById.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.investigation = action.payload
+        state.status = "success"
+        console.log('fetch investigation by id reponse: success')
+      })
+      .addCase(fetchInvestigationById.rejected, (state, action) => {
+        state.status = "failed"
+        state.errors = action.payload
+        console.error('fetch investigation by id reponse failed:', action.payload)
+      })
+
       .addCase(queryAnswer.pending, (state) => {
         state.status = "loading"
         console.log('Querying prompt reponse: loading')
@@ -81,7 +97,6 @@ export const investigationHistorySlice = createSlice({
         const character = state.investigation.characters.find(item => item.id === action.payload.characterId)
         // replace character's last discussion entry (which only contained prompt) with full result
         character.discussions[character.discussions.length - 1] = action.payload
-        console.log([...character.discussions])
         state.status = "success"
         console.log('Querying prompt reponse: success')
       })
@@ -123,6 +138,18 @@ export const queryAnswer = createAsyncThunk(
   async (payload) => {
     try {
       const result = await postDiscussionPrompt(payload.characterId, payload.prompt, payload.token)
+      return result
+    } catch (error) {
+      throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la recuperation de réponse")
+    }
+  }
+)
+
+export const fetchInvestigationById = createAsyncThunk(
+  'investigationHistory/fetchInvestigationById',
+  async (payload) => {
+    try {
+      const result = await getInvestigationsById(payload.id)
       return result
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la recuperation de réponse")

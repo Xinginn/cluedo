@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import GameCard from '../components/molecules/GameCard'
 import { Container, Action, Text } from '../components/atoms'
 import { useDispatch, useSelector } from 'react-redux'
-import { createNewInvestigation } from '../store/investigationStore'
+import { createNewInvestigation, fetchInvestigationById } from '../store/investigationStore'
 import { useNavigate } from "react-router-dom"
 import { updateCurrentScene } from '../store/currentSceneStore'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
@@ -34,6 +34,10 @@ const Games = () => {
     dispatch(disconnectUser())
   }
 
+  const handleSetInvestigation = (id) => {
+    dispatch(fetchInvestigationById({ id }))
+  }
+
   return (
     <Container.Column width={'100%'}>
       {status === 'loading' ?
@@ -45,7 +49,7 @@ const Games = () => {
       </Action.Button>
       <Container.Column>
         {user.investigation.map((game, index) => (
-          <GameCard game={game} key={index} />
+          <GameCard onClick={() => handleSetInvestigation(game.id)} game={game} key={index} />
         ))}
       </Container.Column>
       <Text.Label>

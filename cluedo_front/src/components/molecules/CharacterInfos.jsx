@@ -8,7 +8,6 @@ const CharacterInfos = ({ character = {} }) => {
 
   const { wichTheme } = useContext(AlternativeThemeProviderContext)
 
-
   return (
     <Container.Row alignItems="flex-start" bgColor={'transparent'}>
       <Visual.Image height="700px" src={`/assets/img/${wichTheme.slug}/bodies/${character.gender}/${character.body}`} ></Visual.Image>

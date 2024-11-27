@@ -7,8 +7,12 @@ export const getInvestigations = async () => {
   return response.data
 }
 
+export const getInvestigationsById = async (id) => {
+  const response = await axios.get(`${API_KEY}/investigations/${id}`)
+  return response.data
+}
+
 export const postInvestigation = async ({ payload = null, token }) => {
-  console.log(token)
   const response = await axios.post(`${API_KEY}/investigations`, payload, { headers: { 'Authorization': `Bearer ${token}` } })
   return response.data
 }
