@@ -122,7 +122,7 @@ export const queryAnswer = createAsyncThunk(
   'investigationHistory/queryAnswer',
   async (payload) => {
     try {
-      const result = await postDiscussionPrompt(payload.characterId, payload.prompt)
+      const result = await postDiscussionPrompt(payload.characterId, payload.prompt, payload.token)
       return result
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la recuperation de réponse")
