@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { updateCurrentScene } from '../store/currentSceneStore'
 import Loader from '../components/molecules/Loader'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
+import { disconnectUser } from '../store/userStore'
 
 
 const Games = () => {
@@ -45,6 +46,11 @@ const Games = () => {
     dispatch(createNewInvestigation())
   }
 
+  const handleDisconnect = () => {
+    dispatch(disconnectUser())
+    console.log('déconnection')
+  }
+
   return (
     <Container.Column width={'100%'}>
       {status === 'loading' ?
@@ -62,6 +68,7 @@ const Games = () => {
       {
         wichTheme.slug ? 'Theme alternatif' : 'Theme classique'
       }
+      <Action.Button onClick={handleDisconnect}>Déconnection</Action.Button>
     </Container.Column>
   )
 }

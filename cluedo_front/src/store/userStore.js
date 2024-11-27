@@ -10,7 +10,12 @@ export const userHistorySlice = createSlice({
     status: 'idle',
     errors: null
   },
-  reducers: {},
+  reducers: {
+    disconnectUser: (state, action) => {
+      state.user = null
+      state.isConnected = false
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(connectUser.pending, (state) => {
@@ -43,3 +48,5 @@ export const connectUser = createAsyncThunk(
     }
   }
 )
+
+export const { disconnectUser } = userHistorySlice.actions

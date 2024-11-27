@@ -12,13 +12,13 @@ const Auth = () => {
   const navigate = useNavigate()
 
 
-  const status = useSelector((state) => state.userHistorySlice.status)
+  const { isConnected, status } = useSelector((state) => ({ isConnected: state.userHistorySlice.isConnected, status: state.userHistorySlice.status, }))
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (status === 'success')
-      navigate('/scene')
+    if (isConnected && status === 'success')
+      navigate('/games')
   }, [status])
 
   const handleLogin = () => {
