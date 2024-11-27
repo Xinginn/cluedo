@@ -1,46 +1,14 @@
-import { store } from './store'
+// import { store } from './store'
 import { Provider } from 'react-redux'
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-
-import Games from "./pages/Games"
-import Discussion from './pages/Discussion'
-import Note from './pages/Note'
-import CharacterDetails from './pages/CharacterDetails'
-import Scene from './pages/Scene'
-import Result from './pages/Result'
+import { RouterProvider } from "react-router-dom"
 import { ThemeProvider } from 'styled-components'
 import { useEffect, useState } from 'react'
 import { AlternativeThemeProvider } from './provider/AlternativeThemeProvider'
-
+import { router } from './routes/routes'
+import { PersistGate } from 'redux-persist/integration/react'
+import * as store from './store'
 
 function App() {
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Games />,
-    },
-    {
-      path: "/scene",
-      element: <Scene />,
-    },
-    {
-      path: "/note",
-      element: <Note />,
-    },
-    {
-      path: "/discussion",
-      element: <Discussion />,
-    },
-    {
-      path: "/note/:id",
-      element: <CharacterDetails />,
-    },
-    {
-      path: "/result",
-      element: <Result />,
-    },
-  ])
 
   const [wichTheme, setWichTheme] = useState({
     isAlternative: false,
@@ -70,8 +38,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
-        <Provider store={store}>
-          <RouterProvider router={router} />
+        <Provider store={store.store}>
+          <PersistGate loading={null} persistor={store.persistor}>
+            <RouterProvider router={router} />
+          </PersistGate>
         </Provider>
       </AlternativeThemeProvider>
     </ThemeProvider >

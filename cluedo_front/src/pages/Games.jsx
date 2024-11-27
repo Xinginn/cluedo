@@ -7,13 +7,14 @@ import { useNavigate } from "react-router-dom"
 import { updateCurrentScene } from '../store/currentSceneStore'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 import { Loader } from '../components/molecules'
+import { disconnectUser } from '../store/userStore'
 
 
 const Games = () => {
 
   const navigate = useNavigate()
-  const status = useSelector((state) => state.investigationHistorySlice.status)
-  const characters = useSelector((state) => state.investigationHistorySlice.investigation.characters)
+  const { characters, status } = useSelector((state) => ({ characters: state.investigationHistorySlice.investigation.characters, status: state.investigationHistorySlice.status }))
+  const userToken = useSelector((state) => state.userHistorySlice.token)
   const dispatch = useDispatch()
   const { wichTheme, toggleTheme } = useContext(AlternativeThemeProviderContext)
 
@@ -42,7 +43,11 @@ const Games = () => {
   ]
 
   const handleNewPartie = () => {
-    dispatch(createNewInvestigation())
+    dispatch(createNewInvestigation(userToken))
+  }
+
+  const handleDisconnect = () => {
+    dispatch(disconnectUser())
   }
 
   return (
@@ -62,6 +67,7 @@ const Games = () => {
       {
         wichTheme.slug ? 'Theme alternatif' : 'Theme classique'
       }
+      <Action.Button onClick={handleDisconnect}>Déconnection</Action.Button>
     </Container.Column>
   )
 }

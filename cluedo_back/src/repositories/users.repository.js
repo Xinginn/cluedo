@@ -21,6 +21,17 @@ export async function findUserByUsername(username) {
   return result;
 }
 
+export async function findUserById(id) {
+  const result = await prisma.user.findFirst({
+    where: { id },
+    include: {
+      investigation: true,
+    }
+  });
+
+  return result;
+}
+
 export async function createUser(data) {
   const { characters, ...userData } = data;
 
