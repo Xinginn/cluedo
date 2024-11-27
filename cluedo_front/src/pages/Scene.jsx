@@ -32,14 +32,12 @@ const Scene = () => {
     dispatch(toggleSummaryShown())
   }
 
-  const timer = '07:29'
-
   return (
     <Container.Column width={'100%'} bgColor={'transparent'}>
       {isSummaryShown &&
         <SummaryModal onClick={() => handleSummaryClick()} autopsy={investigation.autopsy}></SummaryModal>
       }
-      <Header title={currentScene.title} timer={timer} link={'/note'} icon={'book'} />
+      <Header title={currentScene.title} link={'/note'} icon={'book'} />
       <MovementIcons currentScene={currentScene} setCurrentScene={handleSceneChange} />
       <CharactersInScene characters={currentSceneCharacters} setCurrentCharacter={setCurrentCharacter} />
       <Visual.Background url={currentScene.url} />

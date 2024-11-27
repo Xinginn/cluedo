@@ -21,7 +21,6 @@ const Note = () => {
   const { wichTheme } = useContext(AlternativeThemeProviderContext)
 
   const data = {
-    timer: '07:29',
     currentScene: {
       url: '/assets/img/backgrounds/cabaret.webp',
       title: 'Cabaret',
@@ -36,7 +35,7 @@ const Note = () => {
 
   return (
     <Container.Column bgColor={'transparent'}>
-      <Header title="Notes" timer={data.timer} link='/scene' icon='go-back' />
+      <Header title="Notes" link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
       <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>

@@ -41,6 +41,7 @@ export const investigationHistorySlice = createSlice({
       ]
     },
     isSummaryShown: true,
+    remainingSeconds: 600,
     status: 'idle',
     errors: null
   },
@@ -54,7 +55,10 @@ export const investigationHistorySlice = createSlice({
     },
     toggleSummaryShown: (state) => {
       state.isSummaryShown = !state.isSummaryShown
-    }
+    },
+    changeSeconds: (state, action) => {
+      state.remainingSeconds += action.payload
+    },
   },
   extraReducers(builder) {
     builder
@@ -130,4 +134,4 @@ export const queryAnswer = createAsyncThunk(
   }
 )
 
-export const { addCharacterDiscussion, toggleSummaryShown } = investigationHistorySlice.actions
+export const { addCharacterDiscussion, toggleSummaryShown, changeSeconds } = investigationHistorySlice.actions

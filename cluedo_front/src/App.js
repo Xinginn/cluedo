@@ -7,6 +7,8 @@ import { AlternativeThemeProvider } from './provider/AlternativeThemeProvider'
 import { router } from './routes/routes'
 import { PersistGate } from 'redux-persist/integration/react'
 import * as store from './store'
+import Clock from './components/molecules/Clock'
+
 
 function App() {
 
@@ -41,6 +43,7 @@ function App() {
         <Provider store={store.store}>
           <PersistGate loading={null} persistor={store.persistor}>
             <RouterProvider router={router} />
+            <Clock></Clock>
           </PersistGate>
         </Provider>
       </AlternativeThemeProvider>
