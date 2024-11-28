@@ -38,16 +38,16 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
-        <Provider store={store.store}>
+    <Provider store={store.store}>
+      <ThemeProvider theme={theme}>
+        <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
           <PersistGate loading={null} persistor={store.persistor}>
             <RouterProvider router={router} />
-            <Clock></Clock>
+            <Clock />
           </PersistGate>
-        </Provider>
-      </AlternativeThemeProvider>
-    </ThemeProvider >
+        </AlternativeThemeProvider>
+      </ThemeProvider >
+    </Provider>
   )
 }
 

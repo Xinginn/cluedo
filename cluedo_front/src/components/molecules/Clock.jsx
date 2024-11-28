@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Container } from '../atoms'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeSeconds } from '../../store/investigationStore'
+// import { useNavigate } from 'react-router-dom'
 
 
 
@@ -9,7 +10,6 @@ const Clock = () => {
 
   const dispatch = useDispatch()
   const isSummaryShown = useSelector((state) => state.investigationHistorySlice.isSummaryShown)
-
 
   function tick() {
     // reduce seconds only if investigationStore has investigation has started (player has closed summary)
