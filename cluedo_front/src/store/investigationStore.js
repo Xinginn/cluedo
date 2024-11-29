@@ -7,7 +7,7 @@ export const investigationHistorySlice = createSlice({
   initialState: {
     investigation: null,
     isSummaryShown: true,
-    remainingSeconds: 4,
+    remainingSeconds: 600,
     status: 'idle',
     errors: null
   },
@@ -24,7 +24,6 @@ export const investigationHistorySlice = createSlice({
       changeSeconds(-1)
     },
     changeSeconds: (state, action) => {
-      console.log('change seconds')
       state.remainingSeconds += action.payload
     },
     resetInvestigationStore: (state) => {
