@@ -10,7 +10,7 @@ import { resetCurrentCharacterStore } from '../store/currentCharacterStore'
 
 const Result = () => {
 
-  const { wichTheme } = useContext(AlternativeThemeProviderContext)
+  const { whichTheme } = useContext(AlternativeThemeProviderContext)
   const dispatch = useDispatch()
 
   const currentCharacter = useSelector((state) => {
@@ -28,7 +28,7 @@ const Result = () => {
 
   return (
     <Container.Column width={'100%'} bgColor={'transparent'}>
-      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/courtroom.webp`}></Visual.Background>
+      <Visual.Background url={`/assets/img/${whichTheme.slug}/backgrounds/courtroom.webp`}></Visual.Background>
       <Container.Row width={'100%'} position={'relative'}>
         <Text.Title>
           {currentCharacter.isKiller ? 'Bravo' : 'Perdu'}

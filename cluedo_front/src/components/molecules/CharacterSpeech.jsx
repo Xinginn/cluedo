@@ -13,7 +13,7 @@ const CharacterSpeech = ({ character }) => {
     return character.discussions
   })
 
-  const { wichTheme } = useContext(AlternativeThemeProviderContext)
+  const { whichTheme } = useContext(AlternativeThemeProviderContext)
 
   const discussionEndRef = useRef(null)
 
@@ -27,7 +27,7 @@ const CharacterSpeech = ({ character }) => {
 
   return (
     <Container.Row bgColor={'transparent'}>
-      <Visual.Image height="600px" src={`/assets/img/${wichTheme.slug}/bodies/${character.gender}/${character.body}`}></Visual.Image>
+      <Visual.Image height="600px" src={`/assets/img/${whichTheme.slug}/bodies/${character.gender}/${character.body}`}></Visual.Image>
       <Container.Column width="400px" maxHeight="600px" overflowY="auto" bgColor="transparent" >
         {discussions.length > 0 &&
           discussions.map((item, index) => {

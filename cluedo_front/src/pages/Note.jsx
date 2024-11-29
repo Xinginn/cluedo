@@ -18,7 +18,7 @@ const Note = () => {
     dispatch(updateCurrentCharacter({ character }))
   }
 
-  const { wichTheme } = useContext(AlternativeThemeProviderContext)
+  const { whichTheme } = useContext(AlternativeThemeProviderContext)
 
   const data = {
     currentScene: {
@@ -37,7 +37,7 @@ const Note = () => {
     <Container.Column bgColor={'transparent'}>
       <Header title="Notes" link='/scene' icon='go-back' />
       <CharacterList characters={characters} onClick={setCurrentCharacter} />
-      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
+      <Visual.Background url={`/assets/img/${whichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>
   )
 }

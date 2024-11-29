@@ -16,7 +16,7 @@ const Games = () => {
   const { characters, status } = useSelector((state) => ({ characters: state.investigationHistorySlice.investigation?.characters, status: state.investigationHistorySlice.status }))
   const { token, user } = useSelector((state) => ({ token: state.userHistorySlice.token, user: state.userHistorySlice.user }))
   const dispatch = useDispatch()
-  const { wichTheme, toggleTheme } = useContext(AlternativeThemeProviderContext)
+  const { whichTheme, toggleTheme } = useContext(AlternativeThemeProviderContext)
 
   useEffect(() => {
     if (status === 'success') {
@@ -53,7 +53,7 @@ const Games = () => {
         ))}
       </Container.Column>
       <Text.Label>
-        Theme {wichTheme.slug}
+        Theme {whichTheme.slug}
       </Text.Label>
       <Action.Button onClick={handleDisconnect}>Déconnection</Action.Button>
     </Container.Column>

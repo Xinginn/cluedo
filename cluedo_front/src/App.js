@@ -10,7 +10,7 @@ import { changeSeconds } from "./store/investigationStore"
 function App() {
 
   const dispatch = useDispatch()
-  const [wichTheme, setWichTheme] = useState({
+  const [whichTheme, setwhichTheme] = useState({
     isAlternative: false,
     slug: 'classique'
   })
@@ -24,19 +24,19 @@ function App() {
   }, [isSummaryShown, remainingSeconds, dispatch]);
 
   useEffect(() => {
-    if (wichTheme.isAlternative)
+    if (whichTheme.isAlternative)
       setTheme({ bgColor: { primary: '#5cbbf2', secondary: '#5c9ded' }, slug: 'alternative' })
     else setTheme({ bgColor: { primary: '#fcdd62', secondary: "#b59d46" }, slug: 'classique' })
-  }, [wichTheme.isAlternative])
+  }, [whichTheme.isAlternative])
 
   const changeAlternativeTheme = () => {
-    if (wichTheme.isAlternative)
-      setWichTheme({
+    if (whichTheme.isAlternative)
+      setwhichTheme({
         isAlternative: false,
         slug: 'classique'
       })
     else
-      setWichTheme({
+      setwhichTheme({
         isAlternative: true,
         slug: 'alternative'
       })
@@ -52,7 +52,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
+      <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, whichTheme: whichTheme }}>
         <RouterProvider router={router} />
       </AlternativeThemeProvider>
     </ThemeProvider >
