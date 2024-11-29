@@ -41,7 +41,7 @@ const Note = () => {
         <Text.Paragraph width="90%" >{investigation.autopsy}</Text.Paragraph>
       </Container.Column>
       <CharacterList characters={investigation.characters} onClick={setCurrentCharacter} />
-      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
+      <Visual.Background url={`/assets/img/${whichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>
   )
 }
