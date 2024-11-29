@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { updateCurrentCharacter } from '../store/currentCharacterStore'
 
 import { Header, CharacterList } from '../components/molecules'
-import { Container, Visual } from '../components/atoms'
+import { Container, Text, Visual } from '../components/atoms'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
 
 const Note = () => {
 
   const dispatch = useDispatch()
 
-  const characters = useSelector((state) => {
-    return state.investigationHistorySlice.investigation.characters
+  const investigation = useSelector((state) => {
+    return state.investigationHistorySlice.investigation
   })
 
   const setCurrentCharacter = (character) => {
@@ -36,8 +36,12 @@ const Note = () => {
   return (
     <Container.Column bgColor={'transparent'}>
       <Header title="Notes" link='/scene' icon='go-back' />
-      <CharacterList characters={characters} onClick={setCurrentCharacter} />
-      <Visual.Background url={`/assets/img/${whichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
+      <Container.Column width="90%" padding="8px" >
+        <Text.Title>Affaire {investigation.victimName}</Text.Title>
+        <Text.Paragraph width="90%" >{investigation.autopsy}</Text.Paragraph>
+      </Container.Column>
+      <CharacterList characters={investigation.characters} onClick={setCurrentCharacter} />
+      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>
   )
 }
