@@ -9,11 +9,15 @@ import { changeSeconds } from '../../store/investigationStore'
 const Clock = () => {
 
   const dispatch = useDispatch()
-  const isSummaryShown = useSelector((state) => state.investigationHistorySlice.isSummaryShown)
+  const { isSummaryShown, remainingSeconds } = useSelector((state) => ({ isSummaryShown: state.investigationHistorySlice.isSummaryShown, remainingSeconds: state.investigationHistorySlice.remainingSeconds }))
+
+  useEffect(() => {
+    console.log(isSummaryShown, remainingSeconds)
+  }, [isSummaryShown, remainingSeconds])
 
   function tick() {
     // reduce seconds only if investigationStore has investigation has started (player has closed summary)
-    if (!isSummaryShown) {
+    if (!isSummaryShown && remainingSeconds > 1) {
       dispatch(changeSeconds(-1))
     }
   }

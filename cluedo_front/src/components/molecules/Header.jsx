@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Text, Container, Visual, Action } from '../atoms'
 import { useDispatch, useSelector } from 'react-redux'
 import { disconnectUser } from '../../store/userStore'
+import { resetInvestigationStore } from '../../store/investigationStore'
+import { resetCurrentSceneStore } from '../../store/currentSceneStore'
+import { resetCurrentCharacterStore } from '../../store/currentCharacterStore'
 
 const Header = ({ title = 'Salle actuelle', link = '/', icon }) => {
 
@@ -25,6 +28,9 @@ const Header = ({ title = 'Salle actuelle', link = '/', icon }) => {
   const dispatch = useDispatch()
 
   const handleDisconnect = () => {
+    dispatch(resetInvestigationStore())
+    dispatch(resetCurrentSceneStore())
+    dispatch(resetCurrentCharacterStore())
     dispatch(disconnectUser())
   }
 

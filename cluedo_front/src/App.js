@@ -1,12 +1,8 @@
-// import { store } from './store'
-import { Provider } from 'react-redux'
 import { RouterProvider } from "react-router-dom"
 import { ThemeProvider } from 'styled-components'
 import { useEffect, useState } from 'react'
 import { AlternativeThemeProvider } from './provider/AlternativeThemeProvider'
 import { router } from './routes/routes'
-import { PersistGate } from 'redux-persist/integration/react'
-import * as store from './store'
 import Clock from './components/molecules/Clock'
 
 
@@ -38,16 +34,12 @@ function App() {
   }
 
   return (
-    <Provider store={store.store}>
-      <ThemeProvider theme={theme}>
-        <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
-          <PersistGate loading={null} persistor={store.persistor}>
-            <RouterProvider router={router} />
-            <Clock />
-          </PersistGate>
-        </AlternativeThemeProvider>
-      </ThemeProvider >
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <AlternativeThemeProvider theme={{ toggleTheme: changeAlternativeTheme, wichTheme: wichTheme }}>
+        <RouterProvider router={router} />
+        {/* <Clock /> */}
+      </AlternativeThemeProvider>
+    </ThemeProvider >
   )
 }
 
