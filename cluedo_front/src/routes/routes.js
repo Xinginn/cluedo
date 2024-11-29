@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom"
 
 import ProtectionRoutes from "./ProtectionRoutes"
+import ClockRoutes from './ClockRoutes'
 import Games from "../pages/Games"
 import Discussion from '../pages/Discussion'
 import Note from '../pages/Note'
@@ -28,7 +29,9 @@ export const router = createBrowserRouter([
     path: "/scene",
     element: (
       <ProtectionRoutes>
-        <Scene />
+        <ClockRoutes>
+          <Scene />
+        </ClockRoutes>
       </ProtectionRoutes>
     ),
   },
@@ -44,7 +47,9 @@ export const router = createBrowserRouter([
     path: "/discussion",
     element: (
       <ProtectionRoutes>
-        <Discussion />
+        <ClockRoutes>
+          <Discussion />
+        </ClockRoutes>
       </ProtectionRoutes>
     ),
   },

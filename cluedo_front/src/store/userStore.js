@@ -12,9 +12,8 @@ export const userHistorySlice = createSlice({
     errors: null
   },
   reducers: {
-    disconnectUser: (state, action) => {
-      state.user = null
-      state.isConnected = false
+    disconnectUser: (state) => {
+      return userHistorySlice.getInitialState()
     }
   },
   extraReducers(builder) {

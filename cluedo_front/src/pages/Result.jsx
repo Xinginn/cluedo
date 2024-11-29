@@ -1,13 +1,17 @@
 import React, { useContext } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Container, Visual, Text, Action } from '../components/atoms'
 import { CharacterList } from '../components/molecules'
 import { AlternativeThemeProviderContext } from '../provider/AlternativeThemeProvider'
+import { resetInvestigationStore } from '../store/investigationStore'
+import { resetCurrentSceneStore } from '../store/currentSceneStore'
+import { resetCurrentCharacterStore } from '../store/currentCharacterStore'
 
 const Result = () => {
 
   const { wichTheme } = useContext(AlternativeThemeProviderContext)
+  const dispatch = useDispatch()
 
   const currentCharacter = useSelector((state) => {
     return state.currentCharacterHistorySlice.currentCharacter.character
@@ -15,6 +19,12 @@ const Result = () => {
   const investigation = useSelector((state) => {
     return state.investigationHistorySlice.investigation
   })
+
+  const resetStores = () => {
+    dispatch(resetInvestigationStore())
+    dispatch(resetCurrentSceneStore())
+    dispatch(resetCurrentCharacterStore())
+  }
 
   return (
     <Container.Column width={'100%'} bgColor={'transparent'}>
@@ -24,7 +34,7 @@ const Result = () => {
           {currentCharacter.isKiller ? 'Bravo' : 'Perdu'}
         </Text.Title>
         <Container.Column position={'absolute'} right={'5vw'}>
-          <Action.Link to={'/games'}>Accueil</Action.Link>
+          <Action.Link onClick={resetStores} to={'/games'}>Accueil</Action.Link>
         </Container.Column>
       </Container.Row>
       <Container.Column bgColor={'#dddddda3'}>
