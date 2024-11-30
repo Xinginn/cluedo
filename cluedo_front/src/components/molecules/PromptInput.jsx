@@ -10,6 +10,7 @@ const PromptInput = () => {
   const [prompt, setPrompt] = useState()
   const dispatch = useDispatch()
   const currentCharacter = useSelector((state) => state.currentCharacterHistorySlice.currentCharacter)
+  const token = useSelector((state) => state.userHistorySlice.token)
 
   const submit = (e) => {
     e.preventDefault()
@@ -21,7 +22,7 @@ const PromptInput = () => {
       discussion: { prompt },
     }
     dispatch(addCharacterDiscussion(payload))
-    dispatch(queryAnswer({ characterId: currentCharacter.id, prompt }))
+    dispatch(queryAnswer({ characterId: currentCharacter.id, prompt, token }))
     setPrompt('')
   }
 

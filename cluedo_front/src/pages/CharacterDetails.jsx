@@ -11,7 +11,7 @@ const CharacterDetails = () => {
     return state.currentCharacterHistorySlice.currentCharacter.character
   })
 
-  const { wichTheme } = useContext(AlternativeThemeProviderContext)
+  const { whichTheme } = useContext(AlternativeThemeProviderContext)
 
   return (
     <Container.Column justifyContent="space-between" height="100vh" bgColor={'transparent'}>
@@ -29,7 +29,7 @@ const CharacterDetails = () => {
       <Container.Row bgColor={'transparent'}>
         <CharacterInfos character={character} />
       </Container.Row>
-      <Visual.Background url={`/assets/img/${wichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
+      <Visual.Background url={`/assets/img/${whichTheme.slug}/backgrounds/notes.webp`}></Visual.Background>
     </Container.Column>
   )
 }

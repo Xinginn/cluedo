@@ -41,8 +41,11 @@ export const currentSceneHistorySlice = createSlice({
         nbCharacter = 3
       const newCharacters = getRandomElements(filteredCharacters, nbCharacter)
       state.characters = newCharacters
+    },
+    resetCurrentSceneStore: (state) => {
+      return currentSceneHistorySlice.getInitialState()
     }
   }
 })
 
-export const { updateCurrentScene } = currentSceneHistorySlice.actions
+export const { updateCurrentScene, resetCurrentSceneStore } = currentSceneHistorySlice.actions

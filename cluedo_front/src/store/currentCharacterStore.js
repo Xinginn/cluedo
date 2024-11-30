@@ -18,8 +18,11 @@ export const currentCharacterHistorySlice = createSlice({
   reducers: {
     updateCurrentCharacter: (state, action) => {
       state.currentCharacter = action.payload
+    },
+    resetCurrentCharacterStore: (state) => {
+      return currentCharacterHistorySlice.getInitialState()
     }
   }
 })
 
-export const { updateCurrentCharacter } = currentCharacterHistorySlice.actions
+export const { updateCurrentCharacter, resetCurrentCharacterStore } = currentCharacterHistorySlice.actions

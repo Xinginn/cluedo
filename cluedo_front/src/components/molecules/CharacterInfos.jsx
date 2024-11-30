@@ -6,12 +6,11 @@ import { AlternativeThemeProviderContext } from '../../provider/AlternativeTheme
 
 const CharacterInfos = ({ character = {} }) => {
 
-  const { wichTheme } = useContext(AlternativeThemeProviderContext)
-
+  const { whichTheme } = useContext(AlternativeThemeProviderContext)
 
   return (
     <Container.Row alignItems="flex-start" bgColor={'transparent'}>
-      <Visual.Image height="700px" src={`/assets/img/${wichTheme.slug}/bodies/${character.gender}/${character.body}`} ></Visual.Image>
+      <Visual.Image height="700px" src={`/assets/img/${whichTheme.slug}/bodies/${character.gender}/${character.body}`} ></Visual.Image>
       <Container.Column bgColor="transparent">
         <Container.Column bgColor="rgba(255,255,255,0.7)" padding="8px" width="calc(100% - 16px)">
           <Text.Name>{character.name ?? "No name"}</Text.Name>
