@@ -36,6 +36,11 @@ export async function getUserByUsername(req, res) {
 export async function postUser(req, res) {
   try {
     const { username, password } = req.body
+    const otherUser = await findUserByUsername(username)
+    if(!!otherUser){
+      res.status(409).send(`Username ${username} is already taken`)
+      return
+    }
     const hash = bcrypt.hashSync(password, 10)
     let user = await createUser({username, password: hash});
     if(user){
