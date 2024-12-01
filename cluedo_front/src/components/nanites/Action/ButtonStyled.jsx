@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const ButtonStyled = styled.button`
+  position: ${(props) => props.position ?? 'initial'};
   border: ${(props) => props.border ?? "none"};
   padding: ${(props) => props.padding ?? "2px"}; 
   height: ${(props) => props.height ?? "100%"}; 
