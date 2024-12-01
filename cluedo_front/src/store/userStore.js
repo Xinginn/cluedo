@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { connection } from '../services/Auth'
+import { connection, registration } from '../services/Auth'
 import { jwtDecode } from "jwt-decode"
 
 export const userHistorySlice = createSlice({
@@ -34,6 +34,23 @@ export const userHistorySlice = createSlice({
         state.errors = action.payload
         console.error('Connecting user failed:', action.payload)
       })
+
+      .addCase(registerUser.pending, (state) => {
+        state.status = "loading"
+        console.log('Register user: loading')
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.user = action.payload.user
+        state.token = action.payload.token
+        state.isConnected = true
+        state.status = "success"
+        console.log('Register user: success')
+      })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.status = "failed"
+        state.errors = action.payload
+        console.error('Register user failed:', action.payload)
+      })
   }
 })
 
@@ -42,6 +59,20 @@ export const connectUser = createAsyncThunk(
   async (payload) => {
     try {
       const result = await connection(payload)
+      const token = result
+      const user = jwtDecode(result)
+      return { user, token }
+    } catch (error) {
+      throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la connection")
+    }
+  }
+)
+
+export const registerUser = createAsyncThunk(
+  'userHistory/registerUser',
+  async (payload) => {
+    try {
+      const result = await registration(payload)
       const token = result
       const user = jwtDecode(result)
       return { user, token }
