@@ -42,7 +42,6 @@ function App() {
       })
   }
 
-
   function tick() {
     // reduce seconds only if investigationStore has investigation has started (player has closed summary)
     if (!isSummaryShown && remainingSeconds > 0) {
