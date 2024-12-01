@@ -48,9 +48,11 @@ const Games = () => {
         <Text.Label>Nouvelle partie</Text.Label>
       </Action.Button>
       <Container.Column>
-        {user.investigations.map((game, index) => (
-          <GameCard onClick={() => handleSetInvestigation(game.id)} game={game} key={index} />
-        ))}
+        <Container.Grid>
+          {user.investigations.map((game, index) => (
+            <GameCard onClick={() => handleSetInvestigation(game.id)} game={game} key={index} />
+          ))}
+        </Container.Grid>
       </Container.Column>
       <Text.Label>
         Theme {whichTheme.slug}
