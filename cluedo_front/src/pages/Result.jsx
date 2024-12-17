@@ -7,6 +7,7 @@ import { AlternativeThemeProviderContext } from '../provider/AlternativeThemePro
 import { resetInvestigationStore } from '../store/investigationStore'
 import { resetCurrentSceneStore } from '../store/currentSceneStore'
 import { resetCurrentCharacterStore } from '../store/currentCharacterStore'
+import { addLastInverstigation } from '../store/userStore'
 
 const Result = () => {
 
@@ -20,7 +21,8 @@ const Result = () => {
     return state.investigationHistorySlice.investigation
   })
 
-  const resetStores = () => {
+  const redirect = () => {
+    dispatch(addLastInverstigation(investigation))
     dispatch(resetInvestigationStore())
     dispatch(resetCurrentSceneStore())
     dispatch(resetCurrentCharacterStore())
@@ -34,7 +36,7 @@ const Result = () => {
           {currentCharacter.isKiller ? 'Bravo' : 'Perdu'}
         </Text.Title>
         <Container.Column position={'absolute'} right={'5vw'}>
-          <Action.Link onClick={resetStores} to={'/games'}>Accueil</Action.Link>
+          <Action.Link onClick={redirect} to={'/games'}>Accueil</Action.Link>
         </Container.Column>
       </Container.Row>
       <Container.Column bgColor={'#dddddda3'}>

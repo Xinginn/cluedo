@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { connection, registration } from '../services/Auth'
-import { jwtDecode } from "jwt-decode"
 
 export const userHistorySlice = createSlice({
   name: 'userHistory',
@@ -14,6 +13,9 @@ export const userHistorySlice = createSlice({
   reducers: {
     disconnectUser: (state) => {
       return userHistorySlice.getInitialState()
+    },
+    addLastInverstigation: (state, action) => {
+      state.user.investigations.push(action.payload)
     }
   },
   extraReducers(builder) {
@@ -82,4 +84,4 @@ export const registerUser = createAsyncThunk(
   }
 )
 
-export const { disconnectUser } = userHistorySlice.actions
+export const { disconnectUser, addLastInverstigation } = userHistorySlice.actions
