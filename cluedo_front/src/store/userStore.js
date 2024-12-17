@@ -59,8 +59,8 @@ export const connectUser = createAsyncThunk(
   async (payload) => {
     try {
       const result = await connection(payload)
-      const token = result
-      const user = jwtDecode(result)
+      const token = result.token
+      const user = result.user
       return { user, token }
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la connection")
@@ -73,8 +73,8 @@ export const registerUser = createAsyncThunk(
   async (payload) => {
     try {
       const result = await registration(payload)
-      const token = result
-      const user = jwtDecode(result)
+      const token = result.token
+      const user = result.user
       return { user, token }
     } catch (error) {
       throw new Error(error.response ? error.response.data : "Une erreur est survenue lors de la connection")

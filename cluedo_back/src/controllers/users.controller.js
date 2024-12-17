@@ -37,15 +37,15 @@ export async function postUser(req, res) {
   try {
     const { username, password } = req.body
     const otherUser = await findUserByUsername(username)
-    if(!!otherUser){
+    if (!!otherUser) {
       res.status(409).send(`Username ${username} is already taken`)
       return
     }
     const hash = bcrypt.hashSync(password, 10)
-    let user = await createUser({username, password: hash});
-    if(user){
-      const token = jwt.sign(user, process.env.JWT_KEY)
-      res.status(201).send(token)
+    let { password: pass, ...user } = await createUser({ username, password: hash });
+    if (user) {
+      const token = jwt.sign(user.id, process.env.JWT_KEY)
+      res.status(201).send({ token, user })
     } else
       res.status(500).send(`Server encountered an error: ${error}`);
     return;
@@ -58,15 +58,15 @@ export async function postUser(req, res) {
 export async function connectUser(req, res) {
   try {
     const { username, password } = req.body
-    const {password: hash, ...user} = await findUserByUsername(username)
+    const { password: hash, ...user } = await findUserByUsername(username)
     const isOk = await bcrypt.compare(password, hash)
-    if(isOk){
-      const token = jwt.sign(user, process.env.JWT_KEY)
-      res.status(200).send(token)
-    }else
+    if (isOk) {
+      const token = jwt.sign(user.id, process.env.JWT_KEY)
+      res.status(200).send({ token, user })
+    } else
       res.status(404).send(`No account with username: ${username}`)
   }
-  catch (error){
+  catch (error) {
     res.status(500).send(`Server encountered an error: ${error}`)
   }
 }
