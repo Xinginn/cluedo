@@ -128,9 +128,10 @@ export async function queryStructuredSuspects(events, suspectsNumber = 4, wordCo
   return result
 }
 
-export async function queryCharacterAnswer(investigation, discussions, character, question, wordCount = 30) {
-  const culpabilityString = character.isKiller ? 'Tu es le tueur' : 'Tu es innocent';
-  const cautionInstruction = character.isKiller ? "Tu dois éviter à tout prix d'être découvert. N'avoue jamais ton crime, même s'il faut mentir, ou parfois détourner l'attention sur d'autres personnes." : "Ne revèle pas tes secrets, sauf si l'enquêteur te confronte à des éléments concrets du descriptif de l'enquête"
+export async function queryCharacterAnswer(investigation, discussions, character, question, wordCount = 30, hintPercentage = 20) {
+  const culpabilityString = character.isKiller ? "et tu es le(la) tueur (tueuse)" : "mais tu es innocent(e)";
+  const cautionInstruction = character.isKiller ? "Tu dois éviter à tout prix d'être découvert. N'avoue jamais ton crime, même s'il faut mentir, ou parfois détourner l'attention sur d'autres personnes." : "Ne revèle pas tes secrets, sauf si l'enquêteur te confronte à des éléments concrets du descriptif de l'enquête";
+  const hintCulpritInstruction = character.isKiller ? "Parle d'un autre personnage aléatoire, quitte à inventer une fausse piste, mais reste crédible" : `tu as ${hintPercentage}% de chances de parler du coupable; sinon, parle d'un autre personnage au hasard`;
 
   const discussionHistoryString = discussions.reduce((stack, current) => {
     const newLine = current.prompt ? `(Enqueteur) ${current.prompt} (${character.name}) ${current.answer}` : `(${character.name}) ${current.answer}`
@@ -142,17 +143,26 @@ export async function queryCharacterAnswer(investigation, discussions, character
   }, "");
 
   const messages = [
+    /*
     {
       role: "system",
       content: `Tu es l'un des suspect dans une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. ${culpabilityString}. Les autres protagonistes sont: '${otherCharactersString}'. Ta personalité est '${character.personality}'. Ton implication dans cette affaire est: '${character.description}'. Tu dois répondre à la dernière question de l'enquêteur en ${wordCount} ou moins, selon ta personalité et selon la discussion jusqu'à mainteant. ${cautionInstruction}. Réponds directement, sans préfixer par ton nom. Répond uniquement à la dernière question, pas aux précédentes. Si tu es innocent, tu as 20% de chances de parler de lui si c'est pertinent, et 20% de chances de donner une fausse piste sur un autre personnage. Sinon, parle de quelqu'un d'autre. Si la question n'a pas de sens, répond simplement que tu n'as pas compris. Si la question ne semble pas porter sur l'enquête, tu n'as pas besoin de parler de l'enquete, répond naturellement.`
     },
+    */
+
+    {
+      role: "system",
+      content: `C'est une affaire criminelle dont la description est: '${investigation.events}'. Tu es ${character.name}, ${character.role}. Tu es suspect(e), ${culpabilityString}. Ta personnalité est '${character.personality}'. Les autres suspects sont: '${otherCharactersString}'. Ton implication dans cette affaire est '${character.description}'. L'inspecteur chargé de l'enquête te parle. Poursuis la conversation naturellement, selon ta personnalité, en restant dans ton personnage. Utilise ${wordCount} ou moins. Réponds directement, sans préfixer par ton nom. ${cautionInstruction}. Si tu as besoin de mentionner un personnage pour te défendre, ${hintCulpritInstruction}. N'évoque pas directement ta personnalité. Si l'échange avec l'inspecteur se répète, ou si les questions de l'inspecteur n'ont aucun sens, tu dois de le faire remarquer à l'inspecteur, ou t'impatienter, voir te braquer, selon ta personnalité.`
+    },
+
     {
       role: "user",
       content: `${discussionHistoryString} (Enqueteur)${question}`,
     },
   ];
 
-  const result = await promptGPT(messages)
+  console.log(discussionHistoryString)
 
+  const result = await promptGPT(messages)
   return result;
 }

@@ -32,7 +32,7 @@ model Investigation {
 
   characters Character[]
   userId     Int
-  user       User        @relation(fields: [userId], references: [id])
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Character {
@@ -48,7 +48,7 @@ model Character {
 
   discussions     Discussion[]
   investigationId Int
-  investigation   Investigation @relation(fields: [investigationId], references: [id])
+  investigation   Investigation @relation(fields: [investigationId], references: [id], onDelete: Cascade)
 }
 
 model Discussion {
@@ -58,5 +58,5 @@ model Discussion {
   createdAt DateTime @default(now())
 
   characterId Int
-  character   Character @relation(fields: [characterId], references: [id])
+  character   Character @relation(fields: [characterId], references: [id], onDelete: Cascade)
 }
